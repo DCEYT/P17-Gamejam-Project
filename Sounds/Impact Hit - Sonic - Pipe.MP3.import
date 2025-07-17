@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dt52pv43ey1wm"
+path="res://.godot/imported/Impact Hit - Sonic - Pipe.MP3-7931f9deed36fedf20fa67deced39d66.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Impact Hit - Sonic - Pipe.MP3"
+dest_files=["res://.godot/imported/Impact Hit - Sonic - Pipe.MP3-7931f9deed36fedf20fa67deced39d66.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
