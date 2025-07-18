@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxel0600vudj7"
-path="res://.godot/imported/prototype_walk_sheet_fixed.png-76123114d77489849e07b61da6c24a88.ctex"
+uid="uid://dkyfsauw2tx26"
+path="res://.godot/imported/prototype_hurt_sheet.png-2c6b86c86007c44c8a9915ee897775a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/prototype_walk_sheet_fixed.png"
-dest_files=["res://.godot/imported/prototype_walk_sheet_fixed.png-76123114d77489849e07b61da6c24a88.ctex"]
+source_file="res://Assets/prototype_hurt_sheet.png"
+dest_files=["res://.godot/imported/prototype_hurt_sheet.png-2c6b86c86007c44c8a9915ee897775a0.ctex"]
 
 [params]
 

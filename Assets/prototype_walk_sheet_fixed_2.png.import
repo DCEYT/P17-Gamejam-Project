@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dut0ffh12h45j"
-path="res://.godot/imported/prototype_run_sheet.png-3dec7cb0901e356e6e104c6fb1bd7b3e.ctex"
+uid="uid://okuqtfmj1o2y"
+path="res://.godot/imported/prototype_walk_sheet_fixed_2.png-359c6fe80a726ca42106a1565413a75a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/prototype_run_sheet.png"
-dest_files=["res://.godot/imported/prototype_run_sheet.png-3dec7cb0901e356e6e104c6fb1bd7b3e.ctex"]
+source_file="res://Assets/prototype_walk_sheet_fixed_2.png"
+dest_files=["res://.godot/imported/prototype_walk_sheet_fixed_2.png-359c6fe80a726ca42106a1565413a75a.ctex"]
 
 [params]
 
