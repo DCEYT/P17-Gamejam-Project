@@ -177,7 +177,7 @@ sources/0 = SubResource("TileSetAtlasSource_spndk")
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ajrrl")]
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-zoom = Vector2(0.445, 0.445)
+zoom = Vector2(0.25, 0.25)
 position_smoothing_enabled = true
 
 [node name="TileMap" type="TileMap" parent="."]
