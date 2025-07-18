@@ -28,6 +28,8 @@ func _process(delta):
 		velocity.y += gravity * delta
 		velocity.x = 0
 		
+	Global.Enemy1DamageAmount = damage_to_deal
+	Global.Enemy1DamageZone = $Enemy1DealDamageArea
 	player = Global.playerBody
 		
 	move(delta)
