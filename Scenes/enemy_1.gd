@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Enemy11
 
-const speed = 400
+const speed = 100
 
 var is_enemy_chase: bool = false
 
