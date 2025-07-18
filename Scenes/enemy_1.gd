@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 class_name Enemy11
 
-const speed = 100
+const speed = 200
 
-var is_enemy_chase: bool = false
+var is_enemy_chase: bool = true
 
 var health = 80
 var health_max = 80
@@ -17,23 +17,60 @@ var is_dealing_damage: bool = false
 
 var dir: Vector2
 const gravity = 900
-var knockback_force = 200
+var knockback_force = -200
 var is_roaming: bool = true
+
+var player: CharacterBody2D
+var player_in_area = false
 
 func _process(delta):
 	if !is_on_floor():
 		velocity.y += gravity * delta
 		velocity.x = 0
+		
+	player = Global.playerBody
+		
 	move(delta)
+	handle_animation()
 	move_and_slide()
 	
 func move(delta):
 	if !dead:
 		if !is_enemy_chase:
 			velocity += dir * speed * delta
+		elif is_enemy_chase and !taking_damage:
+			var dir_to_player = position.direction_to(player.position) * speed
+			velocity.x = dir_to_player.x 
+			dir.x = abs(velocity.x) / velocity.x
+		elif taking_damage:
+			var knockback_dir = position.direction_to(player.position) * knockback_force
+			velocity.x = knockback_dir.x
 		is_roaming = true
 	elif dead:
 		velocity.x = 0
+
+func handle_animation():
+	var anim_sprite = $AnimatedSprite2D
+	if !dead and !taking_damage and !is_dealing_damage:
+		anim_sprite.play("walk")
+		if dir.x == -1:
+			anim_sprite.flip_h = false
+		elif dir.x == 1:
+			anim_sprite.flip_h = true
+
+	elif !dead and taking_damage and !is_dealing_damage:
+		anim_sprite.play("hurt")
+		await get_tree().create_timer(.8).timeout
+		taking_damage = false
+	elif dead and is_roaming:
+		is_roaming = false
+		anim_sprite.play("death")
+		await get_tree().create_timer(1.0).timeout
+		handle_death()
+		
+func handle_death():
+	self.queue_free()
+	
 
 func _on_direction_timer_timeout() -> void:
 	$DirectionTimer.wait_time = choose([1.5,2,2.5])
@@ -44,3 +81,17 @@ func _on_direction_timer_timeout() -> void:
 func choose(array):
 	array.shuffle()
 	return array.front()
+
+
+func _on_enemy_1_hitbox_area_entered(area: Area2D) -> void:
+	var damage = Global.playerDamageAmount
+	if area == Global.playerDamageZone:
+		take_damage(damage)
+		
+func take_damage(damage):
+	health -= damage
+	taking_damage = true
+	if health <= health_min:
+		health = health_min	
+		dead = true
+	print(str(self), "current health is ", health)

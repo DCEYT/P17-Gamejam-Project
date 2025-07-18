@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://mb3w4kd7bja1"]
+[gd_scene load_steps=45 format=3 uid="uid://mb3w4kd7bja1"]
 
 [ext_resource type="Script" path="res://Scenes/enemy_1.gd" id="1_ah3av"]
 [ext_resource type="Texture2D" uid="uid://dbohmwqh3ffqy" path="res://Assets/prototype_idle_sheet_fixed_2.png" id="1_sg0op"]
@@ -285,6 +285,10 @@ animations = [{
 radius = 142.0
 height = 508.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bt5dh"]
+radius = 171.0
+height = 560.0
+
 [node name="Enemy1" type="CharacterBody2D"]
 script = ExtResource("1_ah3av")
 
@@ -299,4 +303,10 @@ shape = SubResource("CapsuleShape2D_kru8w")
 [node name="DirectionTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="Enemy1Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy1Hitbox"]
+shape = SubResource("CapsuleShape2D_bt5dh")
+
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
+[connection signal="area_entered" from="Enemy1Hitbox" to="." method="_on_enemy_1_hitbox_area_entered"]

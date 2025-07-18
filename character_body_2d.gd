@@ -12,6 +12,9 @@ var running = false
 var dashing = false
 var can_dash = true
 
+func _ready():
+	Global.playerBody = self
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
