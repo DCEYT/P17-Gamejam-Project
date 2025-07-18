@@ -22,8 +22,11 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	if Input.is_action_just_pressed("Move Down") and not is_on_floor():
-		velocity.y = 0
+		print(velocity.y)
+		if velocity.y < 0:
+			velocity.y = 0
 		velocity.y += DOWN_SPEED
+
 
 	if Input.is_action_just_pressed("Dash") and can_dash:
 		dashing = true
