@@ -490,7 +490,7 @@ radius = 151.0
 height = 508.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_611oj"]
-size = Vector2(152.579, 268.641)
+size = Vector2(540, 160)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qdjh0"]
 radius = 9.24479
@@ -501,8 +501,7 @@ script = ExtResource("1_i4p6b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vejqs")
-animation = &"hurt"
-frame_progress = 0.653414
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ds0dt")
@@ -516,9 +515,8 @@ wait_time = 0.75
 [node name="DealDamageZone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamageZone"]
-position = Vector2(-145.41, 9.61536)
-rotation = -3.14159
-scale = Vector2(1.04326, 1.21695)
+position = Vector2(-347.5, 2.5)
+scale = Vector2(-1.04326, -1.21695)
 shape = SubResource("RectangleShape2D_611oj")
 disabled = true
 

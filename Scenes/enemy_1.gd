@@ -4,6 +4,8 @@ class_name Enemy11
 
 const speed = 200
 
+@onready var enemy_1_deal_damage_area: Area2D = $Enemy1DealDamageArea
+
 var is_enemy_chase: bool = true
 
 var health = 80
@@ -31,7 +33,12 @@ func _process(delta):
 	Global.Enemy1DamageAmount = damage_to_deal
 	Global.Enemy1DamageZone = $Enemy1DealDamageArea
 	player = Global.playerBody
-		
+	
+	if Global.playerAlive:
+		is_enemy_chase = true
+	elif !Global.playerAlive:
+		is_enemy_chase = false
+	
 	move(delta)
 	handle_animation()
 	move_and_slide()
@@ -40,7 +47,7 @@ func move(delta):
 	if !dead:
 		if !is_enemy_chase:
 			velocity += dir * speed * delta
-		elif is_enemy_chase and !taking_damage:
+		elif is_enemy_chase and !taking_damage and Global.playerAlive:
 			var dir_to_player = position.direction_to(player.position) * speed
 			velocity.x = dir_to_player.x 
 			dir.x = abs(velocity.x) / velocity.x
@@ -57,8 +64,10 @@ func handle_animation():
 		anim_sprite.play("walk")
 		if dir.x == -1:
 			anim_sprite.flip_h = false
+			enemy_1_deal_damage_area.scale.x = 1
 		elif dir.x == 1:
 			anim_sprite.flip_h = true
+			enemy_1_deal_damage_area.scale.x = -1
 
 	elif !dead and taking_damage and !is_dealing_damage:
 		anim_sprite.play("hurt")
@@ -70,6 +79,10 @@ func handle_animation():
 		await get_tree().create_timer(1.0).timeout
 		handle_death()
 		
+	elif !dead and is_dealing_damage:
+		anim_sprite.play("enemy attack")
+	
+
 func handle_death():
 	self.queue_free()
 	
@@ -97,3 +110,10 @@ func take_damage(damage):
 		health = health_min	
 		dead = true
 	print(str(self), "current health is ", health)
+
+
+func _on_enemy_1_deal_damage_area_area_entered(area: Area2D) -> void:
+	if area == Global.playerHitbox:
+		is_dealing_damage = true
+		await get_tree().create_timer(1).timeout
+		is_dealing_damage = false
