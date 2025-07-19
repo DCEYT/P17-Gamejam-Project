@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://dow4y2fph6mfo"]
+[gd_scene load_steps=18 format=3 uid="uid://dpmpvhfbi7uur"]
 
-[ext_resource type="Script" path="res://test_guy_1.gd" id="1_bugag"]
+[ext_resource type="Script" path="res://Scripts/test_guy_1.gd" id="1_bugag"]
 [ext_resource type="Texture2D" uid="uid://dbohmwqh3ffqy" path="res://Assets/prototype_idle_sheet_fixed_2.png" id="2_as37v"]
 [ext_resource type="PackedScene" uid="uid://bd8e6jli7injj" path="res://Scenes/interaction_area.tscn" id="3_o0ul6"]
 

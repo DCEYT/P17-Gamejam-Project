@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://emwov10mwcvj"]
 
-[ext_resource type="Script" path="res://text_box.gd" id="1_r0v5d"]
+[ext_resource type="Script" path="res://Scripts/text_box.gd" id="1_r0v5d"]
 [ext_resource type="Texture2D" uid="uid://pexnm2qphfe1" path="res://Assets/textbox test.png" id="2_juo2c"]
 
 [sub_resource type="FontFile" id="FontFile_kumin"]

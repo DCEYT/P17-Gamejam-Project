@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dxbbcjpckvbpi"]
 
-[ext_resource type="Script" path="res://Scenes/interaction_manager.gd" id="1_6qagu"]
+[ext_resource type="Script" path="res://Scripts/interaction_manager.gd" id="1_6qagu"]
 
 [sub_resource type="FontFile" id="FontFile_caoe1"]
 cache/0/16/0/ascent = 0.0
