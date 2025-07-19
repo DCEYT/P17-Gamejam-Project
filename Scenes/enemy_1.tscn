@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://mb3w4kd7bja1"]
+[gd_scene load_steps=55 format=3 uid="uid://mb3w4kd7bja1"]
 
 [ext_resource type="Script" path="res://Scenes/enemy_1.gd" id="1_ah3av"]
 [ext_resource type="Texture2D" uid="uid://dbohmwqh3ffqy" path="res://Assets/prototype_idle_sheet_fixed_2.png" id="1_sg0op"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://q2r1qfhv0h7l" path="res://Assets/prototype_attack_sheet.png" id="2_gwjtj"]
 [ext_resource type="Texture2D" uid="uid://dkyfsauw2tx26" path="res://Assets/prototype_hurt_sheet.png" id="2_l3hi4"]
 [ext_resource type="Texture2D" uid="uid://okuqtfmj1o2y" path="res://Assets/prototype_walk_sheet_fixed_2.png" id="3_b1gp1"]
+[ext_resource type="Texture2D" uid="uid://2ul5m3j64ycd" path="res://Assets/bright-clean-white-screen-background-9bbir5imhgo6kkyu.jpg" id="7_wnkr6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5l33u"]
 atlas = ExtResource("2_gwjtj")
@@ -340,6 +341,17 @@ height = 560.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nte1h"]
 size = Vector2(370, 164)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ey2ri"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_wnkr6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Enemy1" type="CharacterBody2D"]
 script = ExtResource("1_ah3av")
 
@@ -366,6 +378,12 @@ shape = SubResource("CapsuleShape2D_bt5dh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy1DealDamageArea"]
 position = Vector2(-138, 19)
 shape = SubResource("RectangleShape2D_nte1h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy1DealDamageArea"]
+visible = false
+position = Vector2(-147, 21.25)
+scale = Vector2(0.177083, 0.125463)
+sprite_frames = SubResource("SpriteFrames_ey2ri")
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="area_entered" from="Enemy1Hitbox" to="." method="_on_enemy_1_hitbox_area_entered"]

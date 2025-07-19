@@ -495,8 +495,9 @@ size = Vector2(152.579, 268.641)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qdjh0"]
 radius = 9.24479
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(0.520001, 0.520001)
+collision_layer = 2
 script = ExtResource("1_i4p6b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

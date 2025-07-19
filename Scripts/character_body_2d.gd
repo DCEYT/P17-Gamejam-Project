@@ -32,7 +32,7 @@ func _ready():
 	current_attack = false
 	dead = false
 	can_take_damage = true
-	Global.playerAlive = false
+	Global.playerAlive = true
 
 func _physics_process(delta: float) -> void:
 	Global.playerDamageZone = deal_damage_zone

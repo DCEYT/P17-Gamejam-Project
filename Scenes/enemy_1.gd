@@ -25,6 +25,8 @@ var is_roaming: bool = true
 var player: CharacterBody2D
 var player_in_area = false
 
+@onready var animated_sprite_2d = $Enemy1DealDamageArea/AnimatedSprite2D
+
 func _process(delta):
 	if !is_on_floor():
 		velocity.y += gravity * delta
@@ -61,6 +63,7 @@ func move(delta):
 func handle_animation():
 	var anim_sprite = $AnimatedSprite2D
 	if !dead and !taking_damage and !is_dealing_damage:
+		animated_sprite_2d.visible = false
 		anim_sprite.play("walk")
 		if dir.x == -1:
 			anim_sprite.flip_h = false
@@ -81,6 +84,8 @@ func handle_animation():
 		
 	elif !dead and is_dealing_damage:
 		anim_sprite.play("enemy attack")
+		animated_sprite_2d.visible = true
+		
 	
 
 func handle_death():

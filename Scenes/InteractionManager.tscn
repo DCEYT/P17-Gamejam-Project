@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxbbcjpckvbpi"]
+
+[ext_resource type="Script" path="res://Scenes/interaction_manager.gd" id="1_6qagu"]
+
+[sub_resource type="FontFile" id="FontFile_caoe1"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[node name="InteractionManager" type="Node2D"]
+scale = Vector2(4.16, 4.16)
+script = ExtResource("1_6qagu")
+
+[node name="Label" type="Label" parent="."]
+z_index = 20
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -62.5
+offset_right = 62.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = SubResource("FontFile_caoe1")
+text = "[E] TO INTERACT"
+horizontal_alignment = 1
+vertical_alignment = 1

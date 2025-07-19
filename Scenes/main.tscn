@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bywnunyaulyd4"]
+[gd_scene load_steps=7 format=3 uid="uid://bywnunyaulyd4"]
 
 [ext_resource type="PackedScene" uid="uid://cgrx1qklnvgqu" path="res://Scenes/Player.tscn" id="1_ajrrl"]
 [ext_resource type="Texture2D" uid="uid://g7d3p61y7nt" path="res://TEST TILE/D0EDC67C-EB51-4C80-9FFA-D28F5907A6D0.png" id="2_7rnhn"]
 [ext_resource type="PackedScene" uid="uid://mb3w4kd7bja1" path="res://Scenes/enemy_1.tscn" id="3_e65tw"]
+[ext_resource type="PackedScene" uid="uid://dow4y2fph6mfo" path="res://Scenes/test_guy_1.tscn" id="4_idhot"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_spndk"]
 texture = ExtResource("2_7rnhn")
@@ -188,3 +189,6 @@ layer_0/tile_data = PackedInt32Array(-65540, 65536, 3, -65539, 65536, 3, -196603
 
 [node name="Enemy1" parent="." instance=ExtResource("3_e65tw")]
 position = Vector2(634, 382)
+
+[node name="TestGuy1" parent="." instance=ExtResource("4_idhot")]
+position = Vector2(-1511, 362)
