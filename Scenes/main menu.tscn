@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://gg3k4wcudce4"]
+[gd_scene load_steps=13 format=3 uid="uid://gg3k4wcudce4"]
 
 [ext_resource type="Texture2D" uid="uid://2ul5m3j64ycd" path="res://Assets/bright-clean-white-screen-background-9bbir5imhgo6kkyu.jpg" id="1_s0qaa"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_x3rhf"]
 [ext_resource type="FontFile" uid="uid://c3smwovqohoik" path="res://Assets/Pencilant Script.ttf" id="2_athlb"]
+[ext_resource type="PackedScene" uid="uid://7cgibwnnxkj4" path="res://Scenes/scene_transition_animation.tscn" id="4_0pf1d"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yq0kq"]
 texture = ExtResource("1_s0qaa")
@@ -10,6 +11,8 @@ texture = ExtResource("1_s0qaa")
 [sub_resource type="FontVariation" id="FontVariation_tnt13"]
 base_font = ExtResource("2_athlb")
 variation_embolden = 0.34
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hvj2h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhw6j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -19,6 +22,10 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rb070"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ep33d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pdkef"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -68,6 +75,7 @@ size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_tnt13")
 theme_override_font_sizes/font_size = 62
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hvj2h")
 theme_override_styles/hover = SubResource("StyleBoxFlat_uhw6j")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wpcug")
 theme_override_styles/normal = SubResource("StyleBoxFlat_rb070")
@@ -79,6 +87,7 @@ size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_tnt13")
 theme_override_font_sizes/font_size = 62
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ep33d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_uhw6j")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wpcug")
 theme_override_styles/normal = SubResource("StyleBoxFlat_rb070")
@@ -90,10 +99,18 @@ size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_tnt13")
 theme_override_font_sizes/font_size = 62
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pdkef")
 theme_override_styles/hover = SubResource("StyleBoxFlat_uhw6j")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wpcug")
 theme_override_styles/normal = SubResource("StyleBoxFlat_rb070")
 text = "Exit"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Clicks" type="AudioStreamPlayer2D" parent="."]
+
+[node name="SceneTransitionAnimation" parent="." instance=ExtResource("4_0pf1d")]
+scale = Vector2(500, 500)
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_settings_pressed"]

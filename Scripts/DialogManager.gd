@@ -39,8 +39,8 @@ func _on_text_box_finished_displaying():
 	
 func _unhandled_input(event):
 	if (
-		event.is_action_pressed("advance_dialogue") &&
-		is_dialog_active &&
+		event.is_action_pressed("advance_dialogue") and
+		is_dialog_active and
 		can_advance_line
 	):
 		text_box.queue_free()

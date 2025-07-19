@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://bekswbm8r2kfu"]
+
+[ext_resource type="Script" path="res://Scenes/office_main.gd" id="1_hmppj"]
+[ext_resource type="PackedScene" uid="uid://cydgricstfsm4" path="res://Scenes/tile_map.tscn" id="1_j3yjs"]
+[ext_resource type="PackedScene" uid="uid://dpmpvhfbi7uur" path="res://Scenes/test_guy_1.tscn" id="3_78vuv"]
+[ext_resource type="PackedScene" uid="uid://vjyrgs838jdh" path="res://Scenes/player_office.tscn" id="3_kkarp"]
+[ext_resource type="AudioStream" uid="uid://6mbr5qmd4xwe" path="res://Sounds/DEFAULT GAMEJAM MUSIC.mp3" id="5_wn06t"]
+[ext_resource type="PackedScene" uid="uid://7cgibwnnxkj4" path="res://Scenes/scene_transition_animation.tscn" id="6_lyeba"]
+
+[node name="Office Main" type="Node2D"]
+script = ExtResource("1_hmppj")
+
+[node name="TileMap" parent="." instance=ExtResource("1_j3yjs")]
+
+[node name="TestGuy1" parent="." instance=ExtResource("3_78vuv")]
+position = Vector2(-1352, -230)
+scale = Vector2(0.913325, 0.913325)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-609, -975)
+stream = ExtResource("5_wn06t")
+autoplay = true
+max_distance = 1e+07
+
+[node name="PlayerOffice" parent="." instance=ExtResource("3_kkarp")]
+position = Vector2(-1818, -301)
+
+[node name="Camera2D" type="Camera2D" parent="PlayerOffice"]
+position = Vector2(-291, 162)
+scale = Vector2(0.520001, 0.520001)
+zoom = Vector2(0.2, 0.2)
+position_smoothing_enabled = true
+
+[node name="SceneTransitionAnimation" parent="." instance=ExtResource("6_lyeba")]
+position = Vector2(-609, -975)
+scale = Vector2(200, 200)

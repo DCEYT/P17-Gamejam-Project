@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bywnunyaulyd4"]
+[gd_scene load_steps=10 format=3 uid="uid://bywnunyaulyd4"]
 
 [ext_resource type="PackedScene" uid="uid://cgrx1qklnvgqu" path="res://Scenes/Player.tscn" id="1_ajrrl"]
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_g1d8b"]
 [ext_resource type="Texture2D" uid="uid://g7d3p61y7nt" path="res://TEST TILE/D0EDC67C-EB51-4C80-9FFA-D28F5907A6D0.png" id="2_7rnhn"]
 [ext_resource type="PackedScene" uid="uid://mb3w4kd7bja1" path="res://Scenes/enemy_1.tscn" id="3_e65tw"]
 [ext_resource type="PackedScene" uid="uid://dpmpvhfbi7uur" path="res://Scenes/test_guy_1.tscn" id="4_idhot"]
+[ext_resource type="Script" path="res://Scenes/HealthBar.gd" id="6_qjbc1"]
+[ext_resource type="PackedScene" uid="uid://7cgibwnnxkj4" path="res://Scenes/scene_transition_animation.tscn" id="6_t8w15"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_spndk"]
 texture = ExtResource("2_7rnhn")
@@ -175,8 +178,10 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_spndk")
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_g1d8b")
 
 [node name="Player" parent="." instance=ExtResource("1_ajrrl")]
+position = Vector2(746, -529)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.25, 0.25)
@@ -192,3 +197,26 @@ position = Vector2(634, 382)
 
 [node name="TestGuy1" parent="." instance=ExtResource("4_idhot")]
 position = Vector2(-1511, 362)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+max_distance = 1e+11
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("enemy")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_top = 40.0
+offset_right = 21.0
+offset_bottom = 67.0
+grow_horizontal = 2
+scale = Vector2(1.85113, 1.85113)
+value = 100.0
+script = ExtResource("6_qjbc1")
+enemy = NodePath("../../Enemy1")
+
+[node name="SceneTransitionAnimation" parent="." instance=ExtResource("6_t8w15")]
+position = Vector2(736, -528)
+scale = Vector2(394617, 10000)

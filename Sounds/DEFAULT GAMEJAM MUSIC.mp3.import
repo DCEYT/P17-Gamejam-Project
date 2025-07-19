@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://6mbr5qmd4xwe"
+path="res://.godot/imported/DEFAULT GAMEJAM MUSIC.mp3-965f0b863e83a895ced1296e375b8411.mp3str"
+
+[deps]
+
+source_file="res://Sounds/DEFAULT GAMEJAM MUSIC.mp3"
+dest_files=["res://.godot/imported/DEFAULT GAMEJAM MUSIC.mp3-965f0b863e83a895ced1296e375b8411.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

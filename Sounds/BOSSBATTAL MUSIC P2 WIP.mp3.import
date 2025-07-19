@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://co7wugobf6hy6"
+path="res://.godot/imported/BOSSBATTAL MUSIC P2 WIP.mp3-a296056f0f04a425f59cbc0d78e6d449.mp3str"
+
+[deps]
+
+source_file="res://Sounds/BOSSBATTAL MUSIC P2 WIP.mp3"
+dest_files=["res://.godot/imported/BOSSBATTAL MUSIC P2 WIP.mp3-a296056f0f04a425f59cbc0d78e6d449.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

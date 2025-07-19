@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cnry6nxwrdpbq"
+path="res://.godot/imported/Boss battle wip.mp3-3935e98ff7d62e65f048945fea53890d.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Boss battle wip.mp3"
+dest_files=["res://.godot/imported/Boss battle wip.mp3-3935e98ff7d62e65f048945fea53890d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

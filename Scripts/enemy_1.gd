@@ -2,14 +2,16 @@ extends CharacterBody2D
 
 class_name Enemy11
 
+signal healthChanged
+
 const speed = 200
 
 @onready var enemy_1_deal_damage_area: Area2D = $Enemy1DealDamageArea
 
 var is_enemy_chase: bool = true
 
-var health = 80
-var health_max = 80
+var health = 100
+var health_max = 100
 var health_min = 0
 
 var dead: bool = false
@@ -111,6 +113,7 @@ func _on_enemy_1_hitbox_area_entered(area: Area2D) -> void:
 func take_damage(damage):
 	health -= damage
 	taking_damage = true
+	healthChanged.emit()
 	if health <= health_min:
 		health = health_min	
 		dead = true

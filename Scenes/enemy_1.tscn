@@ -339,7 +339,7 @@ radius = 171.0
 height = 560.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nte1h"]
-size = Vector2(370, 164)
+size = Vector2(238, 413)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ey2ri"]
 animations = [{
@@ -376,13 +376,13 @@ shape = SubResource("CapsuleShape2D_bt5dh")
 [node name="Enemy1DealDamageArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy1DealDamageArea"]
-position = Vector2(-138, 19)
+position = Vector2(-72, 19.5)
 shape = SubResource("RectangleShape2D_nte1h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy1DealDamageArea"]
 visible = false
 position = Vector2(-147, 21.25)
-scale = Vector2(0.177083, 0.125463)
+scale = Vector2(0.0825607, 0.396164)
 sprite_frames = SubResource("SpriteFrames_ey2ri")
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]

@@ -143,8 +143,11 @@ func handle_death_animation():
 	$CollisionShape2D.position.y = 5
 	animated_sprite_2d.play("hurt")
 	await get_tree().create_timer(0.5).timeout
-	$Camera2D.zoom.x = 1
-	$Camera2D.zoom.y = 1
+	for i in range(100):
+		$Camera2D.zoom.x += .01
+		$Camera2D.zoom.y += .01
+		await get_tree().create_timer(0.01).timeout
+	
 	await get_tree().create_timer(2.5).timeout
 	get_tree().change_scene_to_file("res://Scenes/main menu.tscn")
 

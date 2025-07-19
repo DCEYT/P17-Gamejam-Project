@@ -4,7 +4,7 @@ extends MarginContainer
 @onready var timer = $LetterDisplayTimer
 @onready var audio_player = $AudioStreamPlayer2D
 
-const MAX_WIDTH = 100000
+const MAX_WIDTH = 1000000000000
 
 var text = ""
 var letter_index = 0
@@ -31,7 +31,7 @@ func display_text(text_to_display: String, speech_sfx: AudioStream):
 		await resized
 		custom_minimum_size.y = size.y
 		
-	global_position.x -= size.x / 2 + 150
+	global_position.x -= size.x + 50
 	global_position.y -= size.y + 330
 	
 	label.text = ""
