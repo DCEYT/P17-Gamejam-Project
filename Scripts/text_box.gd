@@ -4,7 +4,7 @@ extends MarginContainer
 @onready var timer = $LetterDisplayTimer
 @onready var audio_player = $AudioStreamPlayer2D
 
-const MAX_WIDTH = 1000000000000
+const MAX_WIDTH = 10000000000000
 
 var text = ""
 var letter_index = 0
@@ -16,6 +16,8 @@ var punctuation_time = 0.2
 
 signal finished_displaying()
 
+func _ready():
+	scale = Vector2.ZERO
 
 func display_text(text_to_display: String, speech_sfx: AudioStream):
 	text = text_to_display
@@ -31,10 +33,19 @@ func display_text(text_to_display: String, speech_sfx: AudioStream):
 		await resized
 		custom_minimum_size.y = size.y
 		
-	global_position.x -= size.x + 50
-	global_position.y -= size.y + 330
+	global_position.x -= size.x / 2
+	global_position.y -= size.y + 225
 	
 	label.text = ""
+	
+	pivot_offset = Vector2(size.x / 2, size.y)
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(
+		self, "scale", Vector2(.2, .2), 0.05
+	).set_trans(
+		Tween.TRANS_BACK
+	)
 	
 	_display_letter()
 	

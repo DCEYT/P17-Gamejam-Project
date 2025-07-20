@@ -75,6 +75,10 @@ advance_dialogue={
 ]
 }
 
+[physics]
+
+common/max_physics_steps_per_frame=20
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

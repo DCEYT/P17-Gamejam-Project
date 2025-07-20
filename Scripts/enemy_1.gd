@@ -21,13 +21,16 @@ var is_dealing_damage: bool = false
 
 var dir: Vector2
 const gravity = 900
-var knockback_force = -200
+var knockback_force = -300
 var is_roaming: bool = true
 
 var player: CharacterBody2D
 var player_in_area = false
 
 @onready var animated_sprite_2d = $Enemy1DealDamageArea/AnimatedSprite2D
+
+func _ready():
+	Global.enemyBody = self
 
 func _process(delta):
 	if !is_on_floor():
@@ -42,6 +45,7 @@ func _process(delta):
 		is_enemy_chase = true
 	elif !Global.playerAlive:
 		is_enemy_chase = false
+	
 	
 	move(delta)
 	handle_animation()
@@ -75,9 +79,7 @@ func handle_animation():
 			enemy_1_deal_damage_area.scale.x = -1
 
 	elif !dead and taking_damage and !is_dealing_damage:
-		anim_sprite.play("hurt")
-		await get_tree().create_timer(.8).timeout
-		taking_damage = false
+		handle_hurt_please()
 	elif dead and is_roaming:
 		is_roaming = false
 		anim_sprite.play("death")
@@ -89,7 +91,12 @@ func handle_animation():
 		animated_sprite_2d.visible = true
 		
 	
-
+func handle_hurt_please():
+	var anim_sprite = $AnimatedSprite2D
+	anim_sprite.play("hurt")
+	await get_tree().create_timer(.4).timeout
+	taking_damage = false
+	
 func handle_death():
 	self.queue_free()
 	
@@ -125,3 +132,4 @@ func _on_enemy_1_deal_damage_area_area_entered(area: Area2D) -> void:
 		is_dealing_damage = true
 		await get_tree().create_timer(1).timeout
 		is_dealing_damage = false
+		

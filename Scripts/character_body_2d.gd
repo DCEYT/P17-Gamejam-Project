@@ -1,17 +1,24 @@
 extends CharacterBody2D
 
+class_name Player11
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var deal_damage_zone = $DealDamageZone
+
+signal healthChange
 
 const SPEED = 700
 const JUMP_VELOCITY = -1100
 
 const RUN_SPEED = 1400
-const DOWN_SPEED = 800
+const DOWN_SPEED = 1100
 const DASH_SPEED = 3000
 var running = false
 var dashing = false
+var jumping = false
+var falling = false
 var can_dash = true
+var knockback = false
 
 var attack_type: String
 var current_attack: bool
@@ -23,9 +30,10 @@ var health_max = 100
 var health_min = 0
 var can_take_damage: bool
 var dead: bool
-var knockback_force = -200
+var knockback_force = -10000
 
 var Enemy: CharacterBody2D
+var enemy: CharacterBody2D
 
 func _ready():
 	Global.playerBody = self
@@ -37,23 +45,33 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	Global.playerDamageZone = deal_damage_zone
 	Global.playerHitbox = $PlayerHitbox
+	enemy = Global.enemyBody
 	
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
 	if !dead:
-		# Handle jump.
 		if Input.is_action_just_pressed("Jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
+			jumping = true
+			animated_sprite_2d.play("jump")
+			handle_jumping_please()
+
+		
 
 		if Input.is_action_just_pressed("Move Down") and not is_on_floor():
-			print(velocity.y)
 			if velocity.y < 0:
 				velocity.y = 0
 			velocity.y += DOWN_SPEED
 
-
+		if velocity.y > 110:
+			falling = true
+			if !current_attack and falling == true:
+				animated_sprite_2d.play("fall")
+		if is_on_floor():
+			falling = false
+		
 		if Input.is_action_just_pressed("Dash") and can_dash:
 			dashing = true
 			can_dash = false
@@ -76,24 +94,28 @@ func _physics_process(delta: float) -> void:
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		var direction := Input.get_axis("Move Left", "Move Right")
-		if direction:
+		if !knockback and direction:
 			if dashing: 
 				if !current_attack and can_take_damage:
 					animated_sprite_2d.play("dash")
 				velocity.x = direction * DASH_SPEED
 			elif running:
-				if !current_attack and can_take_damage:
+				if !falling and !jumping and !current_attack and can_take_damage:
 					animated_sprite_2d.play("run")
 				velocity.x = direction * RUN_SPEED
-			else:
-				if !current_attack and can_take_damage:
+			elif !running and !dashing:
+				if !falling and !jumping and !current_attack and can_take_damage:
 					animated_sprite_2d.play("walk")
 				velocity.x = direction * SPEED
 		else:
-			if !current_attack and can_take_damage:
+			if !falling and !jumping and !current_attack and can_take_damage:
 				animated_sprite_2d.play("idle")
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-
+		
+		
+		
+		
+		
 		if !current_attack:
 			if Input.is_action_just_pressed("Attack") or Input.is_action_just_pressed("Attack2"):
 				current_attack = true
@@ -104,11 +126,24 @@ func _physics_process(delta: float) -> void:
 				else:
 					attack_type = "air"
 				
-		
 				set_damage(attack_type)
 				handle_attack_animation(attack_type)
 			check_hitbox()
 	move_and_slide()
+
+		
+
+
+func handle_jumping_please():
+	falling = false
+	while jumping:
+		if velocity.y >= 0 and falling == false:
+			falling = true
+			animated_sprite_2d.play("fall")
+		await get_tree().create_timer(0.01).timeout
+		if jumping and is_on_floor():
+			jumping = false
+			falling = false
 
 func check_hitbox():
 	var hitbox_area = $PlayerHitbox.get_overlapping_areas()
@@ -132,10 +167,30 @@ func take_damage(damage):
 			dead = true
 			Global.playerAlive = false
 			handle_death_animation()
+		healthChange.emit()
 		take_damage_cooldown(1.0)
 
 func handle_hurt_animation():
 	animated_sprite_2d.play("hurt")
+	knockback = true
+	var knockback_dir = position.direction_to(enemy.position) * knockback_force
+	print(knockback_dir)
+	print(knockback_dir[0])
+	if knockback_dir[0] <= 0:
+		knockback_dir = -400
+	elif knockback_dir[0] >= 0:
+		knockback_dir = 400
+	velocity.x = 0
+	for i in range(25):
+		velocity.x += knockback_dir
+		await get_tree().create_timer(0.0025).timeout
+	framefreeze(0.05, 0.25)
+	for i in range(25):
+		velocity.x += knockback_dir
+		await get_tree().create_timer(0.0025).timeout
+	await get_tree().create_timer(0.3).timeout
+	knockback = false
+
 	
 	
 
@@ -168,7 +223,6 @@ func handle_attack_animation(attack_type):
 	if current_attack:
 		var animation = str(attack_type, "_attack")
 		animated_sprite_2d.play(animation)
-		print(animation)
 		toggle_damage_collisions(attack_type)
 
 func toggle_damage_collisions(attack_type):
@@ -197,3 +251,8 @@ func set_damage(attack_type):
 	elif attack_type == "air":
 		current_damage_to_deal = 10
 	Global.playerDamageAmount = current_damage_to_deal
+
+func framefreeze(timeScale, duration):
+	Engine.time_scale = timeScale
+	await get_tree().create_timer(duration * timeScale).timeout
+	Engine.time_scale = 1

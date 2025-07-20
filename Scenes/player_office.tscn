@@ -487,10 +487,11 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qiiw8"]
 radius = 151.0
-height = 508.0
+height = 426.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h046s"]
 radius = 9.24479
+height = 27.8933
 
 [node name="PlayerOffice" type="CharacterBody2D"]
 collision_layer = 2

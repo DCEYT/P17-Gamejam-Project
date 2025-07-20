@@ -8,6 +8,7 @@ const base_text = "[E] to "
 var active_areas = []
 var can_interact = true 
 
+
 func register_area(area: InteractionArea):
 	active_areas.push_back(area)
 	
@@ -22,12 +23,15 @@ func _process(delta):
 		active_areas.sort_custom(_sort_by_distance_to_player)
 		label.text = base_text + active_areas[0].action_name
 		label.global_position = active_areas[0].global_position
-		label.global_position.y -= 350
-		label.global_position.x =  active_areas[0].global_position.x - 250
+		label.global_position.y -= 400
+		label.global_position.x =  active_areas[0].global_position.x - 425
+		label.scale = Vector2(.5, .5)
 		label.show()
 	else:
 		label.hide()
-		
+	
+	
+	
 func _sort_by_distance_to_player(area1, area2):
 	var area1_to_player = player.global_position.distance_to(area1.global_position)
 	var area2_to_player = player.global_position.distance_to(area2.global_position)
