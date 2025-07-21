@@ -1,36 +1,60 @@
-[gd_scene load_steps=7 format=3 uid="uid://bekswbm8r2kfu"]
+[gd_scene load_steps=9 format=3 uid="uid://bf2m0lk0pp80e"]
 
 [ext_resource type="Script" path="res://Scenes/office_main.gd" id="1_hmppj"]
 [ext_resource type="PackedScene" uid="uid://cydgricstfsm4" path="res://Scenes/tile_map.tscn" id="1_j3yjs"]
-[ext_resource type="PackedScene" uid="uid://dpmpvhfbi7uur" path="res://Scenes/test_guy_1.tscn" id="3_78vuv"]
-[ext_resource type="PackedScene" uid="uid://vjyrgs838jdh" path="res://Scenes/player_office.tscn" id="3_kkarp"]
+[ext_resource type="PackedScene" path="res://Scenes/test_guy_1.tscn" id="3_78vuv"]
+[ext_resource type="PackedScene" path="res://Scenes/player_office.tscn" id="3_kkarp"]
 [ext_resource type="AudioStream" uid="uid://6mbr5qmd4xwe" path="res://Sounds/DEFAULT GAMEJAM MUSIC.mp3" id="5_wn06t"]
-[ext_resource type="PackedScene" uid="uid://7cgibwnnxkj4" path="res://Scenes/scene_transition_animation.tscn" id="6_lyeba"]
+[ext_resource type="PackedScene" path="res://Scenes/scene_transition_animation.tscn" id="6_lyeba"]
+[ext_resource type="Texture2D" uid="uid://dgj8fstrepy0q" path="res://Assets/BACKGROUND LOOP.png" id="7_rclbx"]
+[ext_resource type="Texture2D" uid="uid://bc6n5krwslq5s" path="res://Assets/CUBICLE.png" id="8_n7lau"]
 
 [node name="Office Main" type="Node2D"]
 script = ExtResource("1_hmppj")
 
 [node name="TileMap" parent="." instance=ExtResource("1_j3yjs")]
+position = Vector2(1625, 1041)
 
 [node name="TestGuy1" parent="." instance=ExtResource("3_78vuv")]
-position = Vector2(-1352, -230)
-scale = Vector2(0.913325, 0.913325)
+position = Vector2(535, 1002)
+scale = Vector2(0.320155, 0.320155)
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(-609, -975)
+position = Vector2(-609, -969)
 stream = ExtResource("5_wn06t")
 autoplay = true
 max_distance = 1e+07
 
 [node name="PlayerOffice" parent="." instance=ExtResource("3_kkarp")]
-position = Vector2(-1818, -301)
+position = Vector2(85, 1013)
+rotation = -0.0273606
+scale = Vector2(0.327692, 0.327692)
 
 [node name="Camera2D" type="Camera2D" parent="PlayerOffice"]
-position = Vector2(-291, 162)
-scale = Vector2(0.520001, 0.520001)
-zoom = Vector2(0.2, 0.2)
+position = Vector2(667.59, -299.219)
+scale = Vector2(0.514263, 0.46155)
 position_smoothing_enabled = true
 
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("6_lyeba")]
-position = Vector2(-609, -975)
-scale = Vector2(200, 200)
+position = Vector2(-576, -921)
+scale = Vector2(200.602, 195.946)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1209, 584)
+scale = Vector2(0.210131, 0.210131)
+texture = ExtResource("7_rclbx")
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
+position = Vector2(1209, 584)
+scale = Vector2(0.210131, 0.210131)
+texture = ExtResource("8_n7lau")

@@ -21,3 +21,5 @@ func _process(delta) -> void:
 	if !music.is_playing():
 		music.stream = DEFAULT_GAMEJAM_MUSIC
 		music.play()
+
+	
