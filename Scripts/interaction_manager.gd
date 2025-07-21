@@ -23,9 +23,9 @@ func _process(delta):
 		active_areas.sort_custom(_sort_by_distance_to_player)
 		label.text = base_text + active_areas[0].action_name
 		label.global_position = active_areas[0].global_position
-		label.global_position.y -= 400
-		label.global_position.x =  active_areas[0].global_position.x - 425
-		label.scale = Vector2(.5, .5)
+		label.global_position.y -= 200
+		label.global_position.x =  active_areas[0].global_position.x - 180
+		label.scale = Vector2(.2, .2)
 		label.show()
 	else:
 		label.hide()

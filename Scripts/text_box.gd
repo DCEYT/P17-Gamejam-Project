@@ -34,7 +34,7 @@ func display_text(text_to_display: String, speech_sfx: AudioStream):
 		custom_minimum_size.y = size.y
 		
 	global_position.x -= size.x / 2
-	global_position.y -= size.y + 225
+	global_position.y -= size.y + 120
 	
 	label.text = ""
 	
@@ -42,7 +42,7 @@ func display_text(text_to_display: String, speech_sfx: AudioStream):
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(
-		self, "scale", Vector2(.2, .2), 0.05
+		self, "scale", Vector2(.05, .05), 0.05
 	).set_trans(
 		Tween.TRANS_BACK
 	)
