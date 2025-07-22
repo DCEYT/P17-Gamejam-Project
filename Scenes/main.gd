@@ -20,8 +20,24 @@ func musicaa():
 			audio_stream_player_2d.volume_db += .1
 		await get_tree().create_timer(0.001).timeout
 
+@onready var pause_menu= $"Pause menu"
+var paused= false
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if !audio_stream_player_2d.is_playing():
 		audio_stream_player_2d.stream = BOSS_BATTLE_WIP
 		audio_stream_player_2d.play()
+	if Input.is_action_just_pressed("pause"):
+		pauseMenu()
+		
+func pauseMenu():
+	if paused:
+		pause_menu.hide()
+		Engine.time_scale=1
+	else:
+		pause_menu.show()
+		Engine.time_scale=0
+		
+	paused =!paused
+	

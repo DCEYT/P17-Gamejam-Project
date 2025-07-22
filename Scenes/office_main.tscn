@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bf2m0lk0pp80e"]
+[gd_scene load_steps=17 format=3 uid="uid://bf2m0lk0pp80e"]
 
 [ext_resource type="Script" path="res://Scenes/office_main.gd" id="1_hmppj"]
 [ext_resource type="PackedScene" uid="uid://cydgricstfsm4" path="res://Scenes/tile_map.tscn" id="1_j3yjs"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bc6n5krwslq5s" path="res://Assets/CUBICLE.png" id="8_n7lau"]
 [ext_resource type="Texture2D" uid="uid://byob7mxvxh4t2" path="res://Assets/ceiling with lights.png" id="9_qljqq"]
 [ext_resource type="Texture2D" uid="uid://doa64bgiab2ly" path="res://Assets/ceilings without lights.png" id="10_7g0vy"]
+[ext_resource type="Texture2D" uid="uid://cg0sa5xutwuo4" path="res://Scenes/office_gamejam_albert_chibi_png.png" id="11_6tekj"]
+[ext_resource type="PackedScene" uid="uid://cv2oen63ehcra" path="res://pause_menu.tscn" id="12_0t126"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eikw8"]
 texture = ExtResource("9_qljqq")
@@ -1156,7 +1158,7 @@ scale = Vector2(0.514263, 0.46155)
 position_smoothing_enabled = true
 
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("6_lyeba")]
-position = Vector2(-576, -921)
+position = Vector2(-173, -724)
 scale = Vector2(200.602, 195.946)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -1189,3 +1191,12 @@ layer_0/tile_data = PackedInt32Array(262152, 655360, 2, 262155, 655360, 2, 26215
 tile_set = SubResource("TileSet_7dm1g")
 format = 2
 layer_0/tile_data = PackedInt32Array(262147, 655360, 2, 262148, 655360, 2, 262150, 655360, 2, 262156, 655360, 2, 262157, 655360, 2, 262159, 655360, 2, 262160, 655360, 2, 262154, 655360, 2, 262153, 655360, 2, 262151, 655360, 2)
+
+[node name="OfficeGamejamAlbertChibiPng" type="Sprite2D" parent="."]
+position = Vector2(716, 995)
+scale = Vector2(0.302259, 0.302259)
+texture = ExtResource("11_6tekj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("12_0t126")]

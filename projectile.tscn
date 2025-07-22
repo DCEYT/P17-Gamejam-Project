@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnl8ic3bchuq3"]
+
+[ext_resource type="Texture2D" uid="uid://csrie707icale" path="res://Assets/gamejam_cheese_png.png" id="1_5kd7l"]
+[ext_resource type="Script" path="res://projectile.gd" id="1_i7eib"]
+[ext_resource type="PackedScene" path="res://Scenes/test_guy_1.tscn" id="2_g665e"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(2, -2)
+script = ExtResource("1_i7eib")
+
+[node name="chees weapon" type="Sprite2D" parent="."]
+texture = ExtResource("1_5kd7l")
+
+[node name="TestGuy1" parent="." instance=ExtResource("2_g665e")]
+position = Vector2(253, 150)

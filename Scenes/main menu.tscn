@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://2ul5m3j64ycd" path="res://Assets/bright-clean-white-screen-background-9bbir5imhgo6kkyu.jpg" id="1_s0qaa"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_x3rhf"]
 [ext_resource type="FontFile" uid="uid://c3smwovqohoik" path="res://Assets/Pencilant Script.ttf" id="2_athlb"]
-[ext_resource type="PackedScene" uid="uid://7cgibwnnxkj4" path="res://Scenes/scene_transition_animation.tscn" id="4_0pf1d"]
+[ext_resource type="PackedScene" path="res://Scenes/scene_transition_animation.tscn" id="4_0pf1d"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yq0kq"]
 texture = ExtResource("1_s0qaa")
