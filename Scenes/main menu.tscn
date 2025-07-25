@@ -1,15 +1,24 @@
-[gd_scene load_steps=13 format=3 uid="uid://gg3k4wcudce4"]
+[gd_scene load_steps=27 format=3 uid="uid://gg3k4wcudce4"]
 
 [ext_resource type="Texture2D" uid="uid://2ul5m3j64ycd" path="res://Assets/bright-clean-white-screen-background-9bbir5imhgo6kkyu.jpg" id="1_s0qaa"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_x3rhf"]
-[ext_resource type="FontFile" uid="uid://c3smwovqohoik" path="res://Assets/Pencilant Script.ttf" id="2_athlb"]
-[ext_resource type="PackedScene" path="res://Scenes/scene_transition_animation.tscn" id="4_0pf1d"]
+[ext_resource type="FontFile" uid="uid://c5qutnm6h5apr" path="res://Assets/BalsamiqSans-Regular.ttf" id="3_kkhtp"]
+[ext_resource type="PackedScene" uid="uid://7cgibwnnxkj4" path="res://Scenes/scene_transition_animation.tscn" id="4_0pf1d"]
+[ext_resource type="AudioStream" uid="uid://ecj0luseinum" path="res://Sounds/Click - Single.MP3" id="4_dx1km"]
+[ext_resource type="Texture2D" uid="uid://dlipmwoawjgo3" path="res://Assets/Untitled_Artwork (3) (1).png" id="5_8ijt6"]
+[ext_resource type="AudioStream" uid="uid://dtrbk7uvommsd" path="res://Sounds/Recording_2 (mp3cut.net).mp3" id="5_bvgri"]
+[ext_resource type="FontFile" uid="uid://bpbls5psedtyf" path="res://Assets/BalsamiqSans-Bold.ttf" id="5_txejp"]
+[ext_resource type="Script" path="res://Scenes/h_slider.gd" id="6_nnmcy"]
+[ext_resource type="FontFile" uid="uid://dov8y1ernt22f" path="res://Assets/BalsamiqSans-Italic.ttf" id="7_j0xgn"]
+[ext_resource type="Script" path="res://Scenes/fullscreen_control.gd" id="7_nrv6s"]
+[ext_resource type="Texture2D" uid="uid://yekmv87vll3b" path="res://Assets/check_box_on.png" id="9_thkwk"]
+[ext_resource type="Texture2D" uid="uid://cgwccnk3kcjwp" path="res://Assets/check_box_off.png" id="10_y5rut"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yq0kq"]
 texture = ExtResource("1_s0qaa")
 
 [sub_resource type="FontVariation" id="FontVariation_tnt13"]
-base_font = ExtResource("2_athlb")
+base_font = ExtResource("3_kkhtp")
 variation_embolden = 0.34
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hvj2h"]
@@ -27,6 +36,30 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pdkef"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uvf5b"]
+bg_color = Color(0.435192, 0.435192, 0.435192, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_tjyet"]
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 25
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_g0d0y"]
+color = Color(0.532085, 0.737838, 0.725275, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 25
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8gkj8"]
+content_margin_left = 0.0
+content_margin_right = 0.0
+color = Color(0.532085, 0.737838, 0.725275, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 25
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eov4e"]
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -36,7 +69,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x3rhf")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Background" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,7 +88,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 51
 text = "pirate gamejam thing"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MainButtons" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -69,7 +103,7 @@ offset_bottom = 129.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="MainButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -81,7 +115,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_wpcug")
 theme_override_styles/normal = SubResource("StyleBoxFlat_rb070")
 text = "Start Game"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Button2" type="Button" parent="MainButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -93,7 +127,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_wpcug")
 theme_override_styles/normal = SubResource("StyleBoxFlat_rb070")
 text = "Options"
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="Button3" type="Button" parent="MainButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -108,10 +142,140 @@ text = "Exit"
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 
 [node name="Clicks" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dx1km")
 
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("4_0pf1d")]
 scale = Vector2(500, 500)
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]
+[node name="VOLUME SLIDER" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(257.5, 205)
+stream = ExtResource("5_bvgri")
+
+[node name="Options" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uvf5b")
+
+[node name="Label3" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -407.5
+offset_top = 497.0
+offset_right = 407.5
+offset_bottom = 592.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("7_j0xgn")
+theme_override_font_sizes/font_size = 40
+text = "Note: Keybinds can only be changed in-game."
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -233.5
+offset_top = 29.0
+offset_right = 233.5
+offset_bottom = 124.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_txejp")
+theme_override_font_sizes/font_size = 70
+text = "Options"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -237.5
+offset_top = 162.0
+offset_right = 237.5
+offset_bottom = 257.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_kkhtp")
+theme_override_font_sizes/font_size = 60
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 393.0
+offset_top = 37.0
+offset_right = 535.0
+offset_bottom = 112.0
+grow_horizontal = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_tnt13")
+theme_override_font_sizes/font_size = 62
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pdkef")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uhw6j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wpcug")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rb070")
+text = "Back"
+
+[node name="AudioController" type="HSlider" parent="Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -318.5
+offset_top = 205.0
+offset_right = 318.5
+offset_bottom = 347.0
+grow_horizontal = 2
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("5_8ijt6")
+theme_override_icons/grabber_highlight = ExtResource("5_8ijt6")
+theme_override_icons/grabber_disabled = ExtResource("5_8ijt6")
+theme_override_icons/tick = ExtResource("5_8ijt6")
+theme_override_styles/slider = SubResource("StyleBoxLine_tjyet")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_g0d0y")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8gkj8")
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("6_nnmcy")
+audio_bus_name = "Master"
+
+[node name="FullscreenControl" type="CheckButton" parent="Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -318.0
+offset_top = 363.0
+offset_right = 318.0
+offset_bottom = 452.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_kkhtp")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eov4e")
+theme_override_icons/checked = ExtResource("9_thkwk")
+theme_override_icons/unchecked = ExtResource("10_y5rut")
+theme_override_icons/checked_disabled = ExtResource("9_thkwk")
+theme_override_icons/unchecked_disabled = ExtResource("10_y5rut")
+theme_override_icons/checked_mirrored = ExtResource("9_thkwk")
+theme_override_icons/unchecked_mirrored = ExtResource("10_y5rut")
+theme_override_icons/checked_disabled_mirrored = ExtResource("9_thkwk")
+theme_override_icons/unchecked_disabled_mirrored = ExtResource("10_y5rut")
+text = "Fullscreen"
+script = ExtResource("7_nrv6s")
+
+[connection signal="pressed" from="MainButtons/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MainButtons/Button2" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainButtons/Button3" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Options/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Options/AudioController" to="Options/AudioController" method="_on_value_changed"]
+[connection signal="toggled" from="Options/FullscreenControl" to="Options/FullscreenControl" method="_on_toggled"]

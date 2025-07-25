@@ -7,6 +7,10 @@ signal healthChanged
 const speed = 200
 
 @onready var enemy_1_deal_damage_area: Area2D = $Enemy1DealDamageArea
+@onready var hit_sound: AudioStreamPlayer2D = $HitSound
+@onready var gettinghitsound: AudioStreamPlayer2D = $gettinghitsound
+@onready var gettinghitsound_2: AudioStreamPlayer2D = $gettinghitsound2
+@onready var gettinghitsound_3: AudioStreamPlayer2D = $gettinghitsound3
 
 var is_enemy_chase: bool = true
 
@@ -82,8 +86,9 @@ func handle_animation():
 		handle_hurt_please()
 	elif dead and is_roaming:
 		is_roaming = false
+		gettinghitsound_3.play()
 		anim_sprite.play("death")
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(2).timeout
 		handle_death()
 		
 	elif !dead and is_dealing_damage:
@@ -98,6 +103,7 @@ func handle_hurt_please():
 	taking_damage = false
 	
 func handle_death():
+	
 	self.queue_free()
 	
 
@@ -118,6 +124,10 @@ func _on_enemy_1_hitbox_area_entered(area: Area2D) -> void:
 		take_damage(damage)
 		
 func take_damage(damage):
+	if damage == 8:
+		gettinghitsound.play()
+	elif damage == 20:
+		gettinghitsound_2.play()
 	health -= damage
 	taking_damage = true
 	healthChanged.emit()
@@ -130,6 +140,7 @@ func take_damage(damage):
 func _on_enemy_1_deal_damage_area_area_entered(area: Area2D) -> void:
 	if area == Global.playerHitbox:
 		is_dealing_damage = true
+		hit_sound.play()
 		await get_tree().create_timer(1).timeout
 		is_dealing_damage = false
 		

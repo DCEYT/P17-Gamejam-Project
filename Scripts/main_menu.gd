@@ -1,8 +1,11 @@
 extends Control
+
 @onready var music: AudioStreamPlayer2D = $Music
 @onready var clicks: AudioStreamPlayer2D = $Clicks
 @onready var SceneTransitionAnimation = $SceneTransitionAnimation/AnimationPlayer
 @onready var scene_transition_animation: Node2D = $SceneTransitionAnimation
+@onready var main_buttons: VBoxContainer = $MainButtons
+@onready var options: Panel = $Options
 
 
 const DEFAULT_GAMEJAM_MUSIC = preload("res://Sounds/DEFAULT GAMEJAM MUSIC.mp3")
@@ -10,6 +13,8 @@ const CLICK___SINGLE = preload("res://Sounds/Click - Single.MP3")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	scene_transition_animation.visible = false
+	main_buttons.visible = true
+	options.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,10 +40,16 @@ func _on_start_pressed() -> void:
 func _on_settings_pressed() -> void:
 	clicks.stream = CLICK___SINGLE
 	clicks.play()
-	print("settings pressed")
+	main_buttons.visible = false
+	options.visible = true
 
 
 func _on_exit_pressed() -> void:
 	clicks.stream = CLICK___SINGLE
 	clicks.play()
 	get_tree().quit()
+
+
+func _on_back_pressed() -> void:
+	clicks.play()
+	_ready()

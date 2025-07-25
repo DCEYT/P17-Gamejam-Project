@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dtrbk7uvommsd"
+path="res://.godot/imported/Recording_2 (mp3cut.net).mp3-fb1f94bc3aaec07759664a02df0aa9cf.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Recording_2 (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/Recording_2 (mp3cut.net).mp3-fb1f94bc3aaec07759664a02df0aa9cf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

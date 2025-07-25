@@ -4,6 +4,16 @@ class_name Player11
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var deal_damage_zone = $DealDamageZone
+@onready var jump_sound: AudioStreamPlayer2D = $JumpSound
+@onready var walk_sound: AudioStreamPlayer2D = $WalkSound
+@onready var dash_sound: AudioStreamPlayer2D = $DashSound
+@onready var run_sound: AudioStreamPlayer2D = $RunSound
+@onready var hurt_sound: AudioStreamPlayer2D = $HurtSound
+@onready var death_sound: AudioStreamPlayer2D = $DeathSound
+@onready var whoosh_sound: AudioStreamPlayer2D = $WhooshSound
+@onready var whoosh_sound_2: AudioStreamPlayer2D = $WhooshSound2
+@onready var falling_sound: AudioStreamPlayer2D = $FallingSound
+
 
 signal healthChange
 
@@ -56,6 +66,10 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 			jumping = true
 			animated_sprite_2d.play("jump")
+			jump_sound.play()
+			if run_sound.playing or walk_sound.playing:
+				run_sound.stop()
+				walk_sound.stop()
 			handle_jumping_please()
 
 		
@@ -69,8 +83,11 @@ func _physics_process(delta: float) -> void:
 			falling = true
 			if !current_attack and falling == true:
 				animated_sprite_2d.play("fall")
+				if !falling_sound.playing:
+					falling_sound.play()
 		if is_on_floor():
 			falling = false
+			falling_sound.stop()
 		
 		if Input.is_action_just_pressed("Dash") and can_dash:
 			dashing = true
@@ -78,6 +95,7 @@ func _physics_process(delta: float) -> void:
 			print("dash")
 			$Dash_Timer.start()
 			$Can_Dash_Timer.start()
+			dash_sound.play()
 		
 		if Input.is_action_just_pressed("Run"):
 			running = true
@@ -102,16 +120,31 @@ func _physics_process(delta: float) -> void:
 			elif running:
 				if !falling and !jumping and !current_attack and can_take_damage:
 					animated_sprite_2d.play("run")
+				if is_on_floor():
+					if walk_sound.playing:
+						walk_sound.stop()
+					if !run_sound.playing:
+						run_sound.play()
+				else:
+					run_sound.stop()
 				velocity.x = direction * RUN_SPEED
 			elif !running and !dashing:
 				if !falling and !jumping and !current_attack and can_take_damage:
 					animated_sprite_2d.play("walk")
 				velocity.x = direction * SPEED
+				if is_on_floor():
+					if run_sound.playing:
+						run_sound.stop()
+					if !walk_sound.playing:
+						walk_sound.play()
+				else:
+					walk_sound.stop()
 		else:
 			if !falling and !jumping and !current_attack and can_take_damage:
 				animated_sprite_2d.play("idle")
+			walk_sound.stop()
+			run_sound.stop()
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-		
 		
 		
 		
@@ -121,10 +154,13 @@ func _physics_process(delta: float) -> void:
 				current_attack = true
 				if Input.is_action_just_pressed("Attack") and is_on_floor():
 					attack_type = "single"
+					whoosh_sound.play()
 				elif Input.is_action_just_pressed("Attack2") and is_on_floor():
 					attack_type = "heavy"
+					whoosh_sound_2.play()
 				else:
 					attack_type = "air"
+					whoosh_sound.play()
 				
 				set_damage(attack_type)
 				handle_attack_animation(attack_type)
@@ -132,7 +168,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 		
-
 
 func handle_jumping_please():
 	falling = false
@@ -171,6 +206,7 @@ func take_damage(damage):
 		take_damage_cooldown(1.0)
 
 func handle_hurt_animation():
+	hurt_sound.play()
 	animated_sprite_2d.play("hurt")
 	knockback = true
 	var knockback_dir = position.direction_to(enemy.position) * knockback_force
@@ -195,8 +231,12 @@ func handle_hurt_animation():
 	
 
 func handle_death_animation():
-	$CollisionShape2D.position.y = 5
 	animated_sprite_2d.play("hurt")
+	hurt_sound.play()
+	await get_tree().create_timer(0.3).timeout
+	$CollisionShape2D.position.y = 5
+	death_sound.play()
+	animated_sprite_2d.play("death")
 	await get_tree().create_timer(0.5).timeout
 	for i in range(100):
 		$Camera2D.zoom.x += .01
@@ -229,13 +269,14 @@ func toggle_damage_collisions(attack_type):
 	var damage_zone_collision = deal_damage_zone.get_node("CollisionShape2D")
 	var wait_time: float
 	if attack_type == "air":
-		wait_time = .8
+		wait_time = .3
 	elif attack_type == "single":
-		wait_time = .8
+		wait_time = .3
 	elif attack_type == "heavy":
-		wait_time = 1
-	damage_zone_collision.disabled = false
+		wait_time = .9
 	await get_tree().create_timer(wait_time).timeout
+	damage_zone_collision.disabled = false
+	await get_tree().create_timer(.3).timeout
 	damage_zone_collision.disabled = true
 
 

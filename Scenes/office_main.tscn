@@ -1,17 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://bf2m0lk0pp80e"]
+[gd_scene load_steps=16 format=3 uid="uid://bf2m0lk0pp80e"]
 
-[ext_resource type="Script" path="res://Scenes/office_main.gd" id="1_hmppj"]
+[ext_resource type="Script" path="res://Scripts/office_main.gd" id="1_hmppj"]
 [ext_resource type="PackedScene" uid="uid://cydgricstfsm4" path="res://Scenes/tile_map.tscn" id="1_j3yjs"]
-[ext_resource type="PackedScene" path="res://Scenes/test_guy_1.tscn" id="3_78vuv"]
-[ext_resource type="PackedScene" path="res://Scenes/player_office.tscn" id="3_kkarp"]
-[ext_resource type="AudioStream" uid="uid://6mbr5qmd4xwe" path="res://Sounds/DEFAULT GAMEJAM MUSIC.mp3" id="5_wn06t"]
-[ext_resource type="PackedScene" path="res://Scenes/scene_transition_animation.tscn" id="6_lyeba"]
+[ext_resource type="PackedScene" uid="uid://dpmpvhfbi7uur" path="res://Scenes/test_guy_1.tscn" id="3_78vuv"]
+[ext_resource type="PackedScene" uid="uid://vjyrgs838jdh" path="res://Scenes/player_office.tscn" id="3_kkarp"]
+[ext_resource type="PackedScene" uid="uid://7cgibwnnxkj4" path="res://Scenes/scene_transition_animation.tscn" id="6_lyeba"]
 [ext_resource type="Texture2D" uid="uid://dgj8fstrepy0q" path="res://Assets/BACKGROUND LOOP.png" id="7_rclbx"]
 [ext_resource type="Texture2D" uid="uid://bc6n5krwslq5s" path="res://Assets/CUBICLE.png" id="8_n7lau"]
 [ext_resource type="Texture2D" uid="uid://byob7mxvxh4t2" path="res://Assets/ceiling with lights.png" id="9_qljqq"]
 [ext_resource type="Texture2D" uid="uid://doa64bgiab2ly" path="res://Assets/ceilings without lights.png" id="10_7g0vy"]
-[ext_resource type="Texture2D" uid="uid://cg0sa5xutwuo4" path="res://Scenes/office_gamejam_albert_chibi_png.png" id="11_6tekj"]
-[ext_resource type="PackedScene" uid="uid://cv2oen63ehcra" path="res://pause_menu.tscn" id="12_0t126"]
+[ext_resource type="Texture2D" uid="uid://cg0sa5xutwuo4" path="res://Assets/office_gamejam_albert_chibi_png.png" id="11_6tekj"]
+[ext_resource type="PackedScene" uid="uid://wa1i2q3tupnl" path="res://pause_menu.tscn" id="12_0t126"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eikw8"]
 texture = ExtResource("9_qljqq")
@@ -1143,7 +1142,6 @@ scale = Vector2(0.320155, 0.320155)
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-609, -969)
-stream = ExtResource("5_wn06t")
 autoplay = true
 max_distance = 1e+07
 

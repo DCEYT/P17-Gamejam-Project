@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg0sa5xutwuo4"
-path="res://.godot/imported/office_gamejam_albert_chibi_png.png-a30214700d88124f63c00681003aa76d.ctex"
+uid="uid://dy8g130b2csr3"
+path="res://.godot/imported/albert_idle_sheet.png-02ccc643897256040201889d6b135b42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/office_gamejam_albert_chibi_png.png"
-dest_files=["res://.godot/imported/office_gamejam_albert_chibi_png.png-a30214700d88124f63c00681003aa76d.ctex"]
+source_file="res://Assets/albert_idle_sheet.png"
+dest_files=["res://.godot/imported/albert_idle_sheet.png-02ccc643897256040201889d6b135b42.ctex"]
 
 [params]
 

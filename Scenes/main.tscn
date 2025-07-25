@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://bywnunyaulyd4"]
 
 [ext_resource type="PackedScene" uid="uid://cgrx1qklnvgqu" path="res://Scenes/Player.tscn" id="1_ajrrl"]
-[ext_resource type="Script" path="res://Scenes/main.gd" id="1_g1d8b"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_g1d8b"]
 [ext_resource type="Texture2D" uid="uid://g7d3p61y7nt" path="res://TEST TILE/D0EDC67C-EB51-4C80-9FFA-D28F5907A6D0.png" id="2_7rnhn"]
 [ext_resource type="PackedScene" uid="uid://mb3w4kd7bja1" path="res://Scenes/enemy_1.tscn" id="3_e65tw"]
-[ext_resource type="PackedScene" path="res://Scenes/test_guy_1.tscn" id="4_idhot"]
-[ext_resource type="Script" path="res://Scenes/HealthBar.gd" id="6_qjbc1"]
-[ext_resource type="PackedScene" path="res://Scenes/scene_transition_animation.tscn" id="6_t8w15"]
-[ext_resource type="Script" path="res://Scenes/player_health_bar.gd" id="7_c6wm6"]
-[ext_resource type="PackedScene" uid="uid://cv2oen63ehcra" path="res://pause_menu.tscn" id="9_8j3jb"]
+[ext_resource type="PackedScene" uid="uid://dpmpvhfbi7uur" path="res://Scenes/test_guy_1.tscn" id="4_idhot"]
+[ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="6_qjbc1"]
+[ext_resource type="PackedScene" uid="uid://7cgibwnnxkj4" path="res://Scenes/scene_transition_animation.tscn" id="6_t8w15"]
+[ext_resource type="Script" path="res://Scripts/player_health_bar.gd" id="7_c6wm6"]
+[ext_resource type="PackedScene" uid="uid://wa1i2q3tupnl" path="res://pause_menu.tscn" id="9_8j3jb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_spndk"]
 texture = ExtResource("2_7rnhn")

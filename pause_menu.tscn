@@ -1,13 +1,52 @@
-[gd_scene load_steps=9 format=3 uid="uid://cv2oen63ehcra"]
+[gd_scene load_steps=35 format=3 uid="uid://wa1i2q3tupnl"]
 
 [ext_resource type="Script" path="res://pause_menu.gd" id="1_lmg5c"]
 [ext_resource type="FontFile" uid="uid://bpbls5psedtyf" path="res://Assets/BalsamiqSans-Bold.ttf" id="2_41enk"]
+[ext_resource type="AudioStream" uid="uid://ecj0luseinum" path="res://Sounds/Click - Single.MP3" id="3_hguof"]
+[ext_resource type="FontFile" uid="uid://c5qutnm6h5apr" path="res://Assets/BalsamiqSans-Regular.ttf" id="4_ta7yq"]
+[ext_resource type="Texture2D" uid="uid://dlipmwoawjgo3" path="res://Assets/Untitled_Artwork (3) (1).png" id="5_fm1kw"]
+[ext_resource type="Script" path="res://audio_pause_controller.gd" id="6_708vd"]
+[ext_resource type="Texture2D" uid="uid://yekmv87vll3b" path="res://Assets/check_box_on.png" id="7_ak7ty"]
+[ext_resource type="Texture2D" uid="uid://cgwccnk3kcjwp" path="res://Assets/check_box_off.png" id="8_o08tj"]
+[ext_resource type="Script" path="res://fullscreen_pause_control.gd" id="9_pghy7"]
+[ext_resource type="AudioStream" uid="uid://dtrbk7uvommsd" path="res://Sounds/Recording_2 (mp3cut.net).mp3" id="10_f2hlm"]
+[ext_resource type="PackedScene" uid="uid://b1w0k0wiw7ip3" path="res://Scenes/input_button.tscn" id="11_g4mg4"]
+[ext_resource type="FontFile" uid="uid://dov8y1ernt22f" path="res://Assets/BalsamiqSans-Italic.ttf" id="12_pkqep"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4xvdw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pv4dc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_igilp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rl1f5"]
+
+[sub_resource type="Animation" id="Animation_o68e5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.03156, 0.247818, 0.228161, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_gbi77"]
 resource_name = "blur"
@@ -37,84 +76,118 @@ tracks/1/keys = {
 "values": [Color(0.0313726, 0.247059, 0.227451, 0), Color(0.0215891, 0.203095, 0.186344, 0.505882)]
 }
 
-[sub_resource type="Animation" id="Animation_o68e5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PanelContainer:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.03156, 0.247818, 0.228161, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c3jwc"]
 _data = {
 "RESET": SubResource("Animation_o68e5"),
 "blur": SubResource("Animation_gbi77")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bcgut"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yoc4l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ogq3e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t8n03"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d0550"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_201fb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_83p4k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ncm3k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sacpb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ibbi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n1t8n"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_stn0q"]
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 25
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_3j3q4"]
+color = Color(0.532085, 0.737838, 0.725275, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 25
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_882kw"]
+content_margin_left = 0.0
+content_margin_right = 0.0
+color = Color(0.532085, 0.737838, 0.725275, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 25
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cxmwg"]
+
 [node name="PauseMenu" type="Control"]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 0
-offset_left = 456.0
-offset_top = 208.0
-offset_right = 456.0
-offset_bottom = 208.0
-scale = Vector2(2.6573, 2.51226)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.946)
+size_flags_horizontal = 4
 script = ExtResource("1_lmg5c")
-metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = -252.888
-offset_top = -140.113
-offset_right = -212.888
-offset_bottom = -100.113
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(15.2446, 9.67097)
 color = Color(0.03156, 0.247818, 0.228161, 0)
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_right = 70.0
-offset_bottom = 101.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -189.751
+offset_right = 562.0
+offset_bottom = 562.249
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_4xvdw")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="MainButtons" type="VBoxContainer" parent="PanelContainer"]
+visible = false
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="Resume" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="Resume" type="Button" parent="PanelContainer/MainButtons"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_41enk")
+theme_override_font_sizes/font_size = 200
 theme_override_styles/focus = SubResource("StyleBoxEmpty_pv4dc")
 text = "Resume"
 
-[node name="Options" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="PanelContainer/MainButtons"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_41enk")
+theme_override_font_sizes/font_size = 200
 theme_override_styles/focus = SubResource("StyleBoxEmpty_igilp")
 text = "Options"
 
-[node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="PanelContainer/MainButtons"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_41enk")
+theme_override_font_sizes/font_size = 200
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rl1f5")
 text = "Quit"
 
@@ -124,6 +197,214 @@ libraries = {
 }
 autoplay = "blur"
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="ClickSounds" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_hguof")
+
+[node name="Options" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -216.0
+offset_right = 225.0
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.492
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -190.523
+offset_right = 420.0
+offset_bottom = -13.9789
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.399999, 0.399999)
+theme_override_fonts/font = ExtResource("2_41enk")
+theme_override_font_sizes/font_size = 150
+text = "Options"
+
+[node name="Back" type="Button" parent="Options"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = -12.8626
+offset_right = 763.0
+offset_bottom = 235.137
+scale = Vector2(0.279999, 0.279999)
+theme_override_fonts/font = ExtResource("2_41enk")
+theme_override_font_sizes/font_size = 200
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bcgut")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_yoc4l")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ogq3e")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_t8n03")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_d0550")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_201fb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_83p4k")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_ncm3k")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_sacpb")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_5ibbi")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_n1t8n")
+text = "x"
+
+[node name="Label2" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_top = 113.987
+offset_right = 349.0
+offset_bottom = 208.987
+grow_horizontal = 2
+scale = Vector2(0.52, 0.52)
+theme_override_fonts/font = ExtResource("4_ta7yq")
+theme_override_font_sizes/font_size = 60
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="AudioController" type="HSlider" parent="Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -127.0
+offset_top = 150.985
+offset_right = 510.0
+offset_bottom = 292.985
+grow_horizontal = 2
+scale = Vector2(0.4, 0.4)
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("5_fm1kw")
+theme_override_icons/grabber_highlight = ExtResource("5_fm1kw")
+theme_override_icons/grabber_disabled = ExtResource("5_fm1kw")
+theme_override_icons/tick = ExtResource("5_fm1kw")
+theme_override_styles/slider = SubResource("StyleBoxLine_stn0q")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_3j3q4")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_882kw")
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("6_708vd")
+audio_bus_name = "Master"
+
+[node name="FullscreenControl" type="CheckButton" parent="Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.0
+offset_top = 217.581
+offset_right = 501.0
+offset_bottom = 306.581
+grow_horizontal = 2
+scale = Vector2(0.456672, 0.456672)
+theme_override_fonts/font = ExtResource("4_ta7yq")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cxmwg")
+theme_override_icons/checked = ExtResource("7_ak7ty")
+theme_override_icons/unchecked = ExtResource("8_o08tj")
+theme_override_icons/checked_disabled = ExtResource("7_ak7ty")
+theme_override_icons/unchecked_disabled = ExtResource("8_o08tj")
+theme_override_icons/checked_mirrored = ExtResource("7_ak7ty")
+theme_override_icons/unchecked_mirrored = ExtResource("8_o08tj")
+theme_override_icons/checked_disabled_mirrored = ExtResource("7_ak7ty")
+theme_override_icons/unchecked_disabled_mirrored = ExtResource("8_o08tj")
+text = "Fullscreen"
+script = ExtResource("9_pghy7")
+
+[node name="Keybinds" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = 86.148
+offset_right = 707.0
+offset_bottom = 334.148
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.319999, 0.319999)
+theme_override_fonts/font = ExtResource("2_41enk")
+theme_override_font_sizes/font_size = 200
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rl1f5")
+text = "Keybinds"
+
+[node name="VOLUME SLIDER" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(257.5, 205)
+stream = ExtResource("10_f2hlm")
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -271.0
+offset_top = -257.0
+offset_right = 271.0
+offset_bottom = 258.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionList" type="VBoxContainer" parent="PanelContainer2/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputButton" parent="PanelContainer2/MarginContainer/VBoxContainer/ScrollContainer/ActionList" instance=ExtResource("11_g4mg4")]
+layout_mode = 2
+
+[node name="ResetButton" type="Button" parent="PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_41enk")
+theme_override_font_sizes/font_size = 51
+text = "Reset to Default"
+
+[node name="BackButton" type="Button" parent="PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_41enk")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+
+[node name="Label" type="Label" parent="PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_pkqep")
+theme_override_font_sizes/font_size = 15
+text = "Note: If you are aren't fighting in the office, keep in mind that these keybinds will not save when entering a battle due to the developer's incompetence."
+autowrap_mode = 2
+
+[connection signal="pressed" from="PanelContainer/MainButtons/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/MainButtons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="PanelContainer/MainButtons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Options/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Options/AudioController" to="Options/AudioController" method="_on_value_changed"]
+[connection signal="toggled" from="Options/FullscreenControl" to="Options/FullscreenControl" method="_on_toggled"]
+[connection signal="pressed" from="Options/Keybinds" to="." method="_on_keybinds_pressed"]
+[connection signal="pressed" from="PanelContainer2/MarginContainer/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="PanelContainer2/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

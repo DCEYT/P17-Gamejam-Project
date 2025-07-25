@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dt6rgwvnlsadj"
+path="res://.godot/imported/Whoosh 8.MP3-8189b60a64b5e24fb8fc56636ef3dd34.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Whoosh 8.MP3"
+dest_files=["res://.godot/imported/Whoosh 8.MP3-8189b60a64b5e24fb8fc56636ef3dd34.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
