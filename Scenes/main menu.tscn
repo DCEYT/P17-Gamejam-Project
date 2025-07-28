@@ -8,9 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dlipmwoawjgo3" path="res://Assets/Untitled_Artwork (3) (1).png" id="5_8ijt6"]
 [ext_resource type="AudioStream" uid="uid://dtrbk7uvommsd" path="res://Sounds/Recording_2 (mp3cut.net).mp3" id="5_bvgri"]
 [ext_resource type="FontFile" uid="uid://bpbls5psedtyf" path="res://Assets/BalsamiqSans-Bold.ttf" id="5_txejp"]
-[ext_resource type="Script" path="res://Scenes/h_slider.gd" id="6_nnmcy"]
+[ext_resource type="Script" path="res://Scripts/h_slider.gd" id="6_nnmcy"]
 [ext_resource type="FontFile" uid="uid://dov8y1ernt22f" path="res://Assets/BalsamiqSans-Italic.ttf" id="7_j0xgn"]
-[ext_resource type="Script" path="res://Scenes/fullscreen_control.gd" id="7_nrv6s"]
+[ext_resource type="Script" path="res://Scripts/fullscreen_control.gd" id="7_nrv6s"]
 [ext_resource type="Texture2D" uid="uid://yekmv87vll3b" path="res://Assets/check_box_on.png" id="9_thkwk"]
 [ext_resource type="Texture2D" uid="uid://cgwccnk3kcjwp" path="res://Assets/check_box_off.png" id="10_y5rut"]
 

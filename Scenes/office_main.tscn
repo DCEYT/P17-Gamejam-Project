@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://byob7mxvxh4t2" path="res://Assets/ceiling with lights.png" id="9_qljqq"]
 [ext_resource type="Texture2D" uid="uid://doa64bgiab2ly" path="res://Assets/ceilings without lights.png" id="10_7g0vy"]
 [ext_resource type="Texture2D" uid="uid://cg0sa5xutwuo4" path="res://Assets/office_gamejam_albert_chibi_png.png" id="11_6tekj"]
-[ext_resource type="PackedScene" uid="uid://wa1i2q3tupnl" path="res://pause_menu.tscn" id="12_0t126"]
+[ext_resource type="PackedScene" uid="uid://wa1i2q3tupnl" path="res://Scenes/pause_menu.tscn" id="12_0t126"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eikw8"]
 texture = ExtResource("9_qljqq")
