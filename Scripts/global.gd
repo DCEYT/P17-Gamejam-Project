@@ -29,4 +29,7 @@ var JacqueAlive = true
 var MarthaAlive = true
 var BigBossAlive = true
 
+var talkedJacque = false
+var talkedMartha = false
+
 var point = 0

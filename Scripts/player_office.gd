@@ -14,6 +14,14 @@ const gravity = 1300
 func _ready():
 	Global.playerBody = self
 	Global.playerAlive = true
+	if Global.talkedJacque and !Global.talkedMartha:
+		animated_sprite_2d.flip_h = true
+		position.x = 362
+		position.y = 1001
+	elif Global.talkedJacque and Global.talkedMartha:
+		animated_sprite_2d.flip_h = true
+		position.x = 1153
+		position.y = 1001
 
 func _physics_process(delta):
 	Global.playerHitbox = $PlayerHitbox

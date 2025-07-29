@@ -9,7 +9,7 @@ var lines: Array[String]
 func _ready():
 	interaction_area.interact = Callable(self, "_on_interact")
 	animated_sprite_2d.play("idle")
-	if Global.MarthaAlive:
+	if !Global.talkedMartha:
 		lines = [
 			"Why are you looking at me?",
 			"Did you do something?",
@@ -19,7 +19,7 @@ func _ready():
 			"Remember…",
 			"I forgot what to say"
 		]
-	elif !Global.MarthaAlive:
+	elif Global.talkedMartha:
 		lines = [
 			"We already talked..."
 		]
@@ -27,9 +27,10 @@ func _ready():
 func _on_interact():
 	DialogManager.start_dialog(global_position, lines, speech_sound)
 	await DialogManager.dialog_finished
-	if Global.MarthaAlive:
+	if !Global.talkedMartha:
 		scene_transition_animation.play("fade_in")
 		await get_tree().create_timer(.5).timeout
+		Global.talkedMartha = true
 		get_tree().change_scene_to_file("res://Scenes/main.tscn")
-	elif !Global.MarthaAlive:
+	elif Global.talkedMartha:
 		pass

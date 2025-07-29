@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bf2m0lk0pp80e"]
+[gd_scene load_steps=18 format=3 uid="uid://bf2m0lk0pp80e"]
 
 [ext_resource type="Script" path="res://Scripts/office_main.gd" id="1_hmppj"]
 [ext_resource type="PackedScene" uid="uid://cydgricstfsm4" path="res://Scenes/tile_map.tscn" id="1_j3yjs"]
@@ -1131,6 +1131,9 @@ texture_region_size = Vector2i(128, 128)
 tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetAtlasSource_r181m")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlekt"]
+size = Vector2(72, 1287)
+
 [node name="Office Main" type="Node2D"]
 script = ExtResource("1_hmppj")
 
@@ -1147,7 +1150,7 @@ autoplay = true
 max_distance = 1e+07
 
 [node name="PlayerOffice" parent="." instance=ExtResource("3_kkarp")]
-position = Vector2(85, 1013)
+position = Vector2(-380, 960)
 rotation = -0.0273606
 scale = Vector2(0.327692, 0.327692)
 
@@ -1203,3 +1206,16 @@ scale = Vector2(0.360001, 0.360001)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("12_0t126")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="wall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(662, 750)
+shape = SubResource("RectangleShape2D_mlekt")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(844, 0)
+
+[node name="wall" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(662, 750)
+shape = SubResource("RectangleShape2D_mlekt")

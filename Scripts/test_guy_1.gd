@@ -11,7 +11,7 @@ var lines: Array[String]
 func _ready():
 	interaction_area.interact = Callable(self, "_on_interact")
 	animated_sprite_2d.play("idle")
-	if Global.JacqueAlive:
+	if !Global.talkedJacque:
 		lines = [
 			"AFTERNOON ALBE-",
 			"It seems the boss is calling you.",
@@ -23,7 +23,7 @@ func _ready():
 			"ESPECIALLY SINCE I, PRINCE JACQUES JR. THE 3RD-",
 			"(Every other word seems to merge into each other inelligibly)"
 		]
-	elif !Global.JacqueAlive:
+	elif Global.talkedJacque:
 		lines = [
 			"We have already conversed...",
 		]
@@ -31,9 +31,10 @@ func _ready():
 func _on_interact():
 	DialogManager.start_dialog(global_position, lines, speech_sound)
 	await DialogManager.dialog_finished
-	if Global.JacqueAlive:
+	if !Global.talkedJacque:
 		scene_transition_animation.play("fade_in")
 		await get_tree().create_timer(.5).timeout
+		Global.talkedJacque = true
 		get_tree().change_scene_to_file("res://Scenes/main.tscn")
-	elif !Global.JacqueAlive:
+	elif Global.talkedJacque:
 		pass
