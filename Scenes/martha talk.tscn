@@ -1,0 +1,114 @@
+[gd_scene load_steps=18 format=3 uid="uid://yc3mxg8tply3"]
+
+[ext_resource type="Script" path="res://martha_talk.gd" id="1_vnf0y"]
+[ext_resource type="Texture2D" uid="uid://lxwp2twlrs1i" path="res://Assets/martha_idle_sheet.png" id="2_di1km"]
+[ext_resource type="PackedScene" uid="uid://bd8e6jli7injj" path="res://Scenes/interaction_area.tscn" id="3_2wliy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8y6i"]
+atlas = ExtResource("2_di1km")
+region = Rect2(0, 0, 343, 649)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q8a0"]
+atlas = ExtResource("2_di1km")
+region = Rect2(343, 0, 343, 649)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ga2pb"]
+atlas = ExtResource("2_di1km")
+region = Rect2(686, 0, 343, 649)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8quvo"]
+atlas = ExtResource("2_di1km")
+region = Rect2(1029, 0, 343, 649)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiu27"]
+atlas = ExtResource("2_di1km")
+region = Rect2(0, 649, 343, 649)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x2nu"]
+atlas = ExtResource("2_di1km")
+region = Rect2(343, 649, 343, 649)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofb38"]
+atlas = ExtResource("2_di1km")
+region = Rect2(686, 649, 343, 649)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkrcl"]
+atlas = ExtResource("2_di1km")
+region = Rect2(1029, 649, 343, 649)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7immb"]
+atlas = ExtResource("2_di1km")
+region = Rect2(0, 1298, 343, 649)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xl7o"]
+atlas = ExtResource("2_di1km")
+region = Rect2(343, 1298, 343, 649)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nefy6"]
+atlas = ExtResource("2_di1km")
+region = Rect2(686, 1298, 343, 649)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wy8w3"]
+atlas = ExtResource("2_di1km")
+region = Rect2(1029, 1298, 343, 649)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_shurm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8y6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3q8a0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ga2pb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8quvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiu27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x2nu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofb38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkrcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7immb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xl7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nefy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wy8w3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ec5m"]
+radius = 600.471
+
+[node name="Martha" type="Node2D"]
+script = ExtResource("1_vnf0y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_shurm")
+animation = &"idle"
+frame_progress = 0.977932
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_2wliy")]
+action_name = "talk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_6ec5m")

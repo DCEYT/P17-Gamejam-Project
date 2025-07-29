@@ -1,6 +1,6 @@
 extends ProgressBar
 
-@export var enemy: Enemy11
+@export var enemy: Jacque
 
 func _ready():
 	enemy.healthChanged.connect(update)

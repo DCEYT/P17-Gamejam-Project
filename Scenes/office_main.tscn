@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bf2m0lk0pp80e"]
+[gd_scene load_steps=17 format=3 uid="uid://bf2m0lk0pp80e"]
 
 [ext_resource type="Script" path="res://Scripts/office_main.gd" id="1_hmppj"]
 [ext_resource type="PackedScene" uid="uid://cydgricstfsm4" path="res://Scenes/tile_map.tscn" id="1_j3yjs"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://doa64bgiab2ly" path="res://Assets/ceilings without lights.png" id="10_7g0vy"]
 [ext_resource type="Texture2D" uid="uid://cg0sa5xutwuo4" path="res://Assets/office_gamejam_albert_chibi_png.png" id="11_6tekj"]
 [ext_resource type="PackedScene" uid="uid://wa1i2q3tupnl" path="res://Scenes/pause_menu.tscn" id="12_0t126"]
+[ext_resource type="PackedScene" uid="uid://yc3mxg8tply3" path="res://Scenes/martha talk.tscn" id="12_tilsn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eikw8"]
 texture = ExtResource("9_qljqq")
@@ -1141,7 +1142,7 @@ position = Vector2(535, 1002)
 scale = Vector2(0.320155, 0.320155)
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(-609, -969)
+position = Vector2(891, 921)
 autoplay = true
 max_distance = 1e+07
 
@@ -1194,6 +1195,10 @@ layer_0/tile_data = PackedInt32Array(262147, 655360, 2, 262148, 655360, 2, 26215
 position = Vector2(716, 995)
 scale = Vector2(0.302259, 0.302259)
 texture = ExtResource("11_6tekj")
+
+[node name="Martha" parent="." instance=ExtResource("12_tilsn")]
+position = Vector2(1353, 978)
+scale = Vector2(0.360001, 0.360001)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

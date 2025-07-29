@@ -199,6 +199,7 @@ autoplay = "blur"
 
 [node name="ClickSounds" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_hguof")
+max_distance = 100000.0
 
 [node name="Options" type="Panel" parent="."]
 layout_mode = 1
@@ -342,6 +343,7 @@ text = "Keybinds"
 [node name="VOLUME SLIDER" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(257.5, 205)
 stream = ExtResource("10_f2hlm")
+max_distance = 100000.0
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
 layout_mode = 1

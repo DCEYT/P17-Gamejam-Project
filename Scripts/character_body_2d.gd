@@ -55,7 +55,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	Global.playerDamageZone = deal_damage_zone
 	Global.playerHitbox = $PlayerHitbox
-	enemy = Global.enemyBody
+	enemy = Global.JacqueBody
 	
 	
 	if not is_on_floor():
@@ -185,9 +185,14 @@ func check_hitbox():
 	var damage: int
 	if hitbox_area:
 		var hitbox = hitbox_area.front()
-		if hitbox.get_parent() is Enemy11:
-			damage = Global.Enemy1DamageAmount
-			
+		if hitbox.get_parent() is Jacque:
+			damage = Global.JacqueDamageAmount
+		if hitbox.get_parent() is Martha:
+			damage = Global.MarthaDamageAmount
+		if hitbox.get_parent() is BigBoss:
+			damage = Global.BigBossDamageAmount
+		if hitbox.get_parent() is Bullet:
+			damage = Global.BulletDamageAmount
 	if can_take_damage:
 		take_damage(damage)
 		

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-class_name Jacque
+class_name BigBoss
 
 signal healthChanged
 
@@ -8,18 +8,19 @@ signal healthChanged
 const bullet_scene = preload("res://Scenes/bullet.tscn")
 const speed = 400
 var rotate_speed = 100
-var shoot_timer_wait_time = .3
+var shoot_timer_wait_time = .6
 var spawn_point_count = 4
 const radius = 100
+
 @onready var shoot_timer = $ShootTimer
 @onready var rotater = $Rotater
 
-@onready var enemy_1_deal_damage_area: Area2D = $JacqueDealDamageArea
+@onready var enemy_1_deal_damage_area: Area2D = $BBDealDamageArea
 @onready var hit_sound: AudioStreamPlayer2D = $HitSound
 @onready var gettinghitsound: AudioStreamPlayer2D = $gettinghitsound
 @onready var gettinghitsound_2: AudioStreamPlayer2D = $gettinghitsound2
 @onready var gettinghitsound_3: AudioStreamPlayer2D = $gettinghitsound3
-@onready var animated_sprite_2d = $JacqueDealDamageArea/AnimatedSprite2D
+@onready var animated_sprite_2d = $BBDealDamageArea/AnimatedSprite2D
 @onready var anim_sprite = $AnimatedSprite2D
 
 var is_enemy_chase: bool = true
@@ -47,7 +48,7 @@ var player: CharacterBody2D
 var player_in_area = false
 
 func _ready():
-	Global.JacqueBody = self
+	Global.BigBossBody = self
 	
 func _process(delta):
 	
@@ -55,8 +56,8 @@ func _process(delta):
 		velocity.y += gravity * delta
 		velocity.x = 0
 		
-	Global.JacqueDamageAmount = damage_to_deal
-	Global.JacqueDamageZone = $JacqueDealDamageArea
+	Global.BigBossDamageAmount = damage_to_deal
+	Global.BigBossDamageZone = $BBDealDamageArea
 	player = Global.playerBody
 	
 	if Global.playerAlive:
@@ -158,7 +159,7 @@ func handle_hurt_please():
 	taking_damage = false
 	
 func handle_death():
-	Global.JacqueAlive = false
+	Global.BigBossAlive = false
 	self.queue_free()
 	Global.point += 1
 	get_tree().change_scene_to_file("res://Scenes/office_main.tscn")
@@ -173,12 +174,6 @@ func _on_direction_timer_timeout() -> void:
 func choose(array):
 	array.shuffle()
 	return array.front()
-
-
-func _on_enemy_1_hitbox_area_entered(area: Area2D) -> void:
-	var damage = Global.playerDamageAmount
-	if area == Global.playerDamageZone:
-		take_damage(damage)
 		
 func take_damage(damage):
 	if damage == 8:
@@ -193,13 +188,6 @@ func take_damage(damage):
 		dead = true
 
 
-func _on_enemy_1_deal_damage_area_area_entered(area: Area2D) -> void:
-	if area == Global.playerHitbox:
-		is_dealing_damage = true
-		hit_sound.play()
-		await get_tree().create_timer(.4).timeout
-		is_dealing_damage = false
-		
 
 
 func _on_shoot_timer_timeout() -> void:
@@ -211,9 +199,21 @@ func _on_shoot_timer_timeout() -> void:
 			get_tree().root.add_child(bullet)
 			bullet.position = s.global_position
 			bullet.rotation = s.global_rotation
-		throw_animation()
+		throw = false
 		
-func throw_animation():
-	anim_sprite.play("throw")
-	await get_tree().create_timer(.5).timeout
-	throw = false
+
+
+func _on_bb_hitbox_area_entered(area: Area2D) -> void:
+	var damage = Global.playerDamageAmount
+	if area == Global.playerDamageZone:
+		take_damage(damage)
+
+
+
+
+func _on_bb_deal_damage_area_area_entered(area: Area2D) -> void:
+	if area == Global.playerHitbox:
+		is_dealing_damage = true
+		hit_sound.play()
+		await get_tree().create_timer(.4).timeout
+		is_dealing_damage = false

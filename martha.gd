@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-class_name Jacque
+class_name Martha
 
 signal healthChanged
 
@@ -8,24 +8,24 @@ signal healthChanged
 const bullet_scene = preload("res://Scenes/bullet.tscn")
 const speed = 400
 var rotate_speed = 100
-var shoot_timer_wait_time = .3
+var shoot_timer_wait_time = .6
 var spawn_point_count = 4
 const radius = 100
 @onready var shoot_timer = $ShootTimer
 @onready var rotater = $Rotater
 
-@onready var enemy_1_deal_damage_area: Area2D = $JacqueDealDamageArea
+@onready var enemy_1_deal_damage_area: Area2D = $MarthaDealDamageArea
 @onready var hit_sound: AudioStreamPlayer2D = $HitSound
 @onready var gettinghitsound: AudioStreamPlayer2D = $gettinghitsound
 @onready var gettinghitsound_2: AudioStreamPlayer2D = $gettinghitsound2
 @onready var gettinghitsound_3: AudioStreamPlayer2D = $gettinghitsound3
-@onready var animated_sprite_2d = $JacqueDealDamageArea/AnimatedSprite2D
+@onready var animated_sprite_2d = $MarthaDealDamageArea/AnimatedSprite2D
 @onready var anim_sprite = $AnimatedSprite2D
 
 var is_enemy_chase: bool = true
 
-var health = 200
-var health_max = 200
+var health = 100
+var health_max = 100
 var health_min = 0
 
 var dead: bool = false
@@ -47,16 +47,16 @@ var player: CharacterBody2D
 var player_in_area = false
 
 func _ready():
-	Global.JacqueBody = self
-	
+	Global.MarthaBody = self
+
 func _process(delta):
 	
 	if !is_on_floor():
 		velocity.y += gravity * delta
 		velocity.x = 0
 		
-	Global.JacqueDamageAmount = damage_to_deal
-	Global.JacqueDamageZone = $JacqueDealDamageArea
+	Global.MarthaDamageAmount = damage_to_deal
+	Global.MarthaDamageZone = $MarthaDealDamageArea
 	player = Global.playerBody
 	
 	if Global.playerAlive:
@@ -67,7 +67,7 @@ func _process(delta):
 	var new_rotation = rotater.rotation_degrees + rotate_speed * delta
 	rotater.rotation_degrees = fmod(new_rotation, 360)
 	
-	if !phase1 and health <= 100:
+	if !phase1 and health <= 70:
 		phase_end = true
 		var step = 2 * PI / spawn_point_count
 		phase1 = true
@@ -82,14 +82,14 @@ func _process(delta):
 		shoot_timer.wait_time = shoot_timer_wait_time
 		shoot_timer.start()
 	
-	if phase_end and health <= 50:
+	if phase_end and health <= 40:
 		phase_end = false
 		shoot_timer.stop()
 	
 	if phase1 and !phase2 and health <= 40:
 		
 		var rotate_speed = 200
-		var shoot_timer_wait_time = .2
+		var shoot_timer_wait_time = .4
 		var spawn_point_count = 8
 		
 		var step = 2 * PI / spawn_point_count
@@ -158,10 +158,9 @@ func handle_hurt_please():
 	taking_damage = false
 	
 func handle_death():
-	Global.JacqueAlive = false
+	Global.MarthaAlive = false
 	self.queue_free()
 	Global.point += 1
-	get_tree().change_scene_to_file("res://Scenes/office_main.tscn")
 	
 
 func _on_direction_timer_timeout() -> void:
@@ -174,11 +173,6 @@ func choose(array):
 	array.shuffle()
 	return array.front()
 
-
-func _on_enemy_1_hitbox_area_entered(area: Area2D) -> void:
-	var damage = Global.playerDamageAmount
-	if area == Global.playerDamageZone:
-		take_damage(damage)
 		
 func take_damage(damage):
 	if damage == 8:
@@ -193,27 +187,31 @@ func take_damage(damage):
 		dead = true
 
 
-func _on_enemy_1_deal_damage_area_area_entered(area: Area2D) -> void:
-	if area == Global.playerHitbox:
-		is_dealing_damage = true
-		hit_sound.play()
-		await get_tree().create_timer(.4).timeout
-		is_dealing_damage = false
-		
 
 
 func _on_shoot_timer_timeout() -> void:
 	if !taking_damage:
 		throw = true
 		anim_sprite.play("throw")
+		await get_tree().create_timer(.6).timeout
 		for s in rotater.get_children():
 			var bullet = bullet_scene.instantiate()
 			get_tree().root.add_child(bullet)
 			bullet.position = s.global_position
 			bullet.rotation = s.global_rotation
-		throw_animation()
+		throw = false
 		
-func throw_animation():
-	anim_sprite.play("throw")
-	await get_tree().create_timer(.5).timeout
-	throw = false
+
+
+func _on_martha_hitbox_area_entered(area: Area2D) -> void:
+	var damage = Global.playerDamageAmount
+	if area == Global.playerDamageZone:
+		take_damage(damage)
+
+
+func _on_martha_deal_damage_area_area_entered(area: Area2D) -> void:
+	if area == Global.playerHitbox:
+		is_dealing_damage = true
+		hit_sound.play()
+		await get_tree().create_timer(1).timeout
+		is_dealing_damage = false

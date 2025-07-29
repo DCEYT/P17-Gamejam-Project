@@ -4,51 +4,51 @@
 [ext_resource type="Texture2D" uid="uid://d1q1etnhoqp43" path="res://Assets/jacque_idle_sheet.png" id="2_lmebq"]
 [ext_resource type="PackedScene" uid="uid://bd8e6jli7injj" path="res://Scenes/interaction_area.tscn" id="3_o0ul6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n5oau"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xib5"]
 atlas = ExtResource("2_lmebq")
 region = Rect2(0, 0, 341, 616)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qjxr1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbi3u"]
 atlas = ExtResource("2_lmebq")
 region = Rect2(341, 0, 341, 616)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hggec"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5cdc"]
 atlas = ExtResource("2_lmebq")
 region = Rect2(682, 0, 341, 616)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8yvqd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lbco"]
 atlas = ExtResource("2_lmebq")
 region = Rect2(1023, 0, 341, 616)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5l488"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g21on"]
 atlas = ExtResource("2_lmebq")
 region = Rect2(0, 616, 341, 616)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xvese"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6g7e"]
 atlas = ExtResource("2_lmebq")
 region = Rect2(341, 616, 341, 616)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nqoyt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qrm7"]
 atlas = ExtResource("2_lmebq")
 region = Rect2(682, 616, 341, 616)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c85le"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sysms"]
 atlas = ExtResource("2_lmebq")
 region = Rect2(1023, 616, 341, 616)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qihqm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_x876e"]
 atlas = ExtResource("2_lmebq")
 region = Rect2(0, 1232, 341, 616)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gemk5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yiykp"]
 atlas = ExtResource("2_lmebq")
 region = Rect2(341, 1232, 341, 616)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kgp16"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwmwm"]
 atlas = ExtResource("2_lmebq")
 region = Rect2(682, 1232, 341, 616)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_axfeq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sqaw"]
 atlas = ExtResource("2_lmebq")
 region = Rect2(1023, 1232, 341, 616)
 
@@ -56,40 +56,40 @@ region = Rect2(1023, 1232, 341, 616)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n5oau")
+"texture": SubResource("AtlasTexture_3xib5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qjxr1")
+"texture": SubResource("AtlasTexture_cbi3u")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hggec")
+"texture": SubResource("AtlasTexture_x5cdc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8yvqd")
+"texture": SubResource("AtlasTexture_8lbco")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5l488")
+"texture": SubResource("AtlasTexture_g21on")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xvese")
+"texture": SubResource("AtlasTexture_i6g7e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nqoyt")
+"texture": SubResource("AtlasTexture_2qrm7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c85le")
+"texture": SubResource("AtlasTexture_sysms")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qihqm")
+"texture": SubResource("AtlasTexture_x876e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gemk5")
+"texture": SubResource("AtlasTexture_yiykp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kgp16")
+"texture": SubResource("AtlasTexture_uwmwm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_axfeq")
+"texture": SubResource("AtlasTexture_7sqaw")
 }],
 "loop": true,
 "name": &"idle",
@@ -105,6 +105,8 @@ script = ExtResource("1_bugag")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qmixv")
 animation = &"idle"
+frame = 5
+frame_progress = 0.354404
 
 [node name="InteractionArea" parent="." instance=ExtResource("3_o0ul6")]
 action_name = "talk"

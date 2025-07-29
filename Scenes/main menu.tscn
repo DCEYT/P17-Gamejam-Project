@@ -140,15 +140,17 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_rb070")
 text = "Exit"
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(568, 300)
 
 [node name="Clicks" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(572, 296)
 stream = ExtResource("4_dx1km")
 
 [node name="SceneTransitionAnimation" parent="." instance=ExtResource("4_0pf1d")]
 scale = Vector2(500, 500)
 
 [node name="VOLUME SLIDER" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(257.5, 205)
+position = Vector2(558, 299)
 stream = ExtResource("5_bvgri")
 
 [node name="Options" type="Panel" parent="."]

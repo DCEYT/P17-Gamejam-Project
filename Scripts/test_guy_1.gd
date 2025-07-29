@@ -6,21 +6,34 @@ extends Node2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
-const lines: Array[String] = [
-	"Yo wassup",
-	"Wait a minute...",
-	"The boss is calling you btw.",
-	"so you should get there",
-	"right away."
-]
+var lines: Array[String] 
 
 func _ready():
 	interaction_area.interact = Callable(self, "_on_interact")
 	animated_sprite_2d.play("idle")
+	if Global.JacqueAlive:
+		lines = [
+			"AFTERNOON ALBE-",
+			"It seems the boss is calling you.",
+			"Not that I care about your lowly caste.",
+			"(Jacque recently got laid off at a local grocery store)",
+			"After all...",
+			"The old would only serve as a nuisance...",
+			"EXCEPT FOR YOU OF COURSE",
+			"ESPECIALLY SINCE I, PRINCE JACQUES JR. THE 3RD-",
+			"(Every other word seems to merge into each other inelligibly)"
+		]
+	elif !Global.JacqueAlive:
+		lines = [
+			"We have already conversed...",
+		]
 	
 func _on_interact():
 	DialogManager.start_dialog(global_position, lines, speech_sound)
 	await DialogManager.dialog_finished
-	scene_transition_animation.play("fade_in")
-	await get_tree().create_timer(.5).timeout
-	get_tree().change_scene_to_file("res://Scenes/main.tscn")
+	if Global.JacqueAlive:
+		scene_transition_animation.play("fade_in")
+		await get_tree().create_timer(.5).timeout
+		get_tree().change_scene_to_file("res://Scenes/main.tscn")
+	elif !Global.JacqueAlive:
+		pass

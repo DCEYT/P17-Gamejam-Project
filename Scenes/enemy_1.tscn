@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://mb3w4kd7bja1"]
+[gd_scene load_steps=74 format=3 uid="uid://mb3w4kd7bja1"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_1.gd" id="1_ah3av"]
 [ext_resource type="Texture2D" uid="uid://by8ip6stbboih" path="res://Assets/jacque_death_sheet.png" id="2_djuwo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cmtp8kuttjv3j" path="res://Assets/jacque_hurt_sheet.png" id="4_ei1bg"]
 [ext_resource type="Texture2D" uid="uid://d1q1etnhoqp43" path="res://Assets/jacque_idle_sheet.png" id="5_4efkd"]
 [ext_resource type="Texture2D" uid="uid://c71b4c2vppbsx" path="res://Assets/jacque_walk_sheet.png" id="6_gv7a7"]
+[ext_resource type="Texture2D" uid="uid://bkg1enwndp476" path="res://Assets/jacque_throw_sheet.png" id="7_a3j3e"]
 [ext_resource type="AudioStream" uid="uid://wlvgysvw0t38" path="res://Sounds/Hit - Single.MP3" id="9_io7dk"]
 [ext_resource type="AudioStream" uid="uid://ckr4agufj2w5b" path="res://Sounds/punch.mp3" id="10_uicxa"]
 [ext_resource type="AudioStream" uid="uid://b6ynir2ejd025" path="res://Sounds/Impact Hit 4.MP3" id="11_t64i4"]
@@ -174,6 +175,38 @@ region = Rect2(0, 1232, 314, 616)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7bkcy"]
 atlas = ExtResource("6_gv7a7")
 region = Rect2(314, 1232, 314, 616)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0t0x6"]
+atlas = ExtResource("7_a3j3e")
+region = Rect2(0, 0, 382, 616)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svq1l"]
+atlas = ExtResource("7_a3j3e")
+region = Rect2(382, 0, 382, 616)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps4hc"]
+atlas = ExtResource("7_a3j3e")
+region = Rect2(764, 0, 382, 616)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0n8e"]
+atlas = ExtResource("7_a3j3e")
+region = Rect2(0, 616, 382, 616)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0ptv"]
+atlas = ExtResource("7_a3j3e")
+region = Rect2(382, 616, 382, 616)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xaw4"]
+atlas = ExtResource("7_a3j3e")
+region = Rect2(764, 616, 382, 616)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3un8h"]
+atlas = ExtResource("7_a3j3e")
+region = Rect2(0, 1232, 382, 616)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ki4ty"]
+atlas = ExtResource("7_a3j3e")
+region = Rect2(382, 1232, 382, 616)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yr713"]
 atlas = ExtResource("6_gv7a7")
@@ -359,6 +392,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_0t0x6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svq1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps4hc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0n8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0ptv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xaw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3un8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ki4ty")
+}],
+"loop": false,
+"name": &"throw",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_yr713")
 }, {
 "duration": 1.0,
@@ -400,13 +462,15 @@ size = Vector2(238, 413)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ey2ri"]
 
-[node name="Enemy1" type="CharacterBody2D"]
+[node name="Jacque" type="CharacterBody2D"]
 script = ExtResource("1_ah3av")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8034c")
-animation = &"death"
+animation = &"throw"
 autoplay = "idle"
+frame = 7
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_kru8w")
@@ -414,18 +478,18 @@ shape = SubResource("CapsuleShape2D_kru8w")
 [node name="DirectionTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="Enemy1Hitbox" type="Area2D" parent="."]
+[node name="JacqueHitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy1Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JacqueHitbox"]
 shape = SubResource("CapsuleShape2D_bt5dh")
 
-[node name="Enemy1DealDamageArea" type="Area2D" parent="."]
+[node name="JacqueDealDamageArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy1DealDamageArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JacqueDealDamageArea"]
 position = Vector2(-72, 19.5)
 shape = SubResource("RectangleShape2D_nte1h")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy1DealDamageArea"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="JacqueDealDamageArea"]
 visible = false
 position = Vector2(-147, 21.25)
 scale = Vector2(0.0825607, 0.396164)
@@ -444,6 +508,11 @@ stream = ExtResource("11_t64i4")
 [node name="gettinghitsound3" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_whddu")
 
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="Rotater" type="Node2D" parent="."]
+
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
-[connection signal="area_entered" from="Enemy1Hitbox" to="." method="_on_enemy_1_hitbox_area_entered"]
-[connection signal="area_entered" from="Enemy1DealDamageArea" to="." method="_on_enemy_1_deal_damage_area_area_entered"]
+[connection signal="area_entered" from="JacqueHitbox" to="." method="_on_enemy_1_hitbox_area_entered"]
+[connection signal="area_entered" from="JacqueDealDamageArea" to="." method="_on_enemy_1_deal_damage_area_area_entered"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
