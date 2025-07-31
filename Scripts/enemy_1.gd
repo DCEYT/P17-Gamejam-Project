@@ -35,7 +35,7 @@ var is_dealing_damage: bool = false
 var phase1: bool = false
 var phase2: bool = false
 var phase_end: bool = false
-
+var jumping = false
 
 var dir: Vector2
 const gravity = 900
@@ -66,6 +66,9 @@ func _process(delta):
 	
 	var new_rotation = rotater.rotation_degrees + rotate_speed * delta
 	rotater.rotation_degrees = fmod(new_rotation, 360)
+	
+	if !jumping:
+		handle_jumping()
 	
 	if !phase1 and health <= 100:
 		phase_end = true
@@ -110,6 +113,12 @@ func _process(delta):
 	move(delta)
 	handle_animation()
 	move_and_slide()
+	
+func handle_jumping():
+	jumping = true
+	await get_tree().create_timer(10).timeout
+	velocity.y = -2000
+	jumping = false
 	
 func move(delta):
 	if !dead:

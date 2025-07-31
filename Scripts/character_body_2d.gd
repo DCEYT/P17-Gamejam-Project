@@ -13,6 +13,7 @@ class_name Player11
 @onready var whoosh_sound: AudioStreamPlayer2D = $WhooshSound
 @onready var whoosh_sound_2: AudioStreamPlayer2D = $WhooshSound2
 @onready var falling_sound: AudioStreamPlayer2D = $FallingSound
+@onready var attackanim: AnimatedSprite2D = $DealDamageZone/AnimatedSprite2D
 
 
 signal healthChange
@@ -55,7 +56,12 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	Global.playerDamageZone = deal_damage_zone
 	Global.playerHitbox = $PlayerHitbox
-	enemy = Global.JacqueBody
+	if Global.talkedJacque and !Global.talkedMartha and !Global.talkedDoor:
+		enemy = Global.JacqueBody
+	elif Global.talkedJacque and Global.talkedMartha and !Global.talkedDoor:
+		enemy = Global.MarthaBody
+	elif Global.talkedJacque and Global.talkedMartha and Global.talkedDoor:
+		enemy = Global.BigBossBody
 	
 	
 	if not is_on_floor():
@@ -164,6 +170,7 @@ func _physics_process(delta: float) -> void:
 				
 				set_damage(attack_type)
 				handle_attack_animation(attack_type)
+				handle_other_attack(attack_type)
 			check_hitbox()
 	move_and_slide()
 
@@ -193,6 +200,10 @@ func check_hitbox():
 			damage = Global.BigBossDamageAmount
 		if hitbox.get_parent() is Bullet:
 			damage = Global.BulletDamageAmount
+		if hitbox.get_parent() is MBullet:
+			damage = Global.MBulletDamageAmount
+		if hitbox.get_parent() is BBBullet:
+			damage = Global.BBBulletDamageAmount
 	if can_take_damage:
 		take_damage(damage)
 		
@@ -269,6 +280,10 @@ func handle_attack_animation(attack_type):
 		var animation = str(attack_type, "_attack")
 		animated_sprite_2d.play(animation)
 		toggle_damage_collisions(attack_type)
+
+func handle_other_attack(attack_type):
+	var animation = str(attack_type, "_attack")
+	attackanim.play(animation)
 
 func toggle_damage_collisions(attack_type):
 	var damage_zone_collision = deal_damage_zone.get_node("CollisionShape2D")

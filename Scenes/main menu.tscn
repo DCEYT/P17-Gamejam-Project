@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://gg3k4wcudce4"]
+[gd_scene load_steps=29 format=3 uid="uid://gg3k4wcudce4"]
 
-[ext_resource type="Texture2D" uid="uid://2ul5m3j64ycd" path="res://Assets/bright-clean-white-screen-background-9bbir5imhgo6kkyu.jpg" id="1_s0qaa"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_x3rhf"]
+[ext_resource type="Texture2D" uid="uid://bfob37ofa7a1l" path="res://Assets/office_gamejam_main_menu_art.png" id="2_rhoy3"]
+[ext_resource type="Texture2D" uid="uid://cnowbr2t2ua2f" path="res://Assets/office_gamejam_title.png" id="3_exqjh"]
 [ext_resource type="FontFile" uid="uid://c5qutnm6h5apr" path="res://Assets/BalsamiqSans-Regular.ttf" id="3_kkhtp"]
 [ext_resource type="PackedScene" uid="uid://7cgibwnnxkj4" path="res://Scenes/scene_transition_animation.tscn" id="4_0pf1d"]
 [ext_resource type="AudioStream" uid="uid://ecj0luseinum" path="res://Sounds/Click - Single.MP3" id="4_dx1km"]
@@ -15,7 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://cgwccnk3kcjwp" path="res://Assets/check_box_off.png" id="10_y5rut"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yq0kq"]
-texture = ExtResource("1_s0qaa")
+texture = ExtResource("2_rhoy3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_efs2e"]
+texture = ExtResource("3_exqjh")
 
 [sub_resource type="FontVariation" id="FontVariation_tnt13"]
 base_font = ExtResource("3_kkhtp")
@@ -25,6 +29,8 @@ variation_embolden = 0.34
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhw6j"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0, 0, 0, 1)
+shadow_size = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpcug"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -78,18 +84,20 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_yq0kq")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 2
-offset_left = 576.0
-offset_top = 112.0
-offset_right = 1106.0
-offset_bottom = 182.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 51
-text = "pirate gamejam thing"
+[node name="Panel" type="Panel" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 598.0
+offset_top = 40.0
+offset_right = -33.0
+offset_bottom = -399.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_efs2e")
 
 [node name="MainButtons" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -97,9 +105,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -540.0
-offset_top = -129.0
+offset_top = -61.0
 offset_right = -46.0
-offset_bottom = 129.0
+offset_bottom = 197.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -218,7 +226,7 @@ offset_right = 535.0
 offset_bottom = 112.0
 grow_horizontal = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_tnt13")
 theme_override_font_sizes/font_size = 62
 theme_override_styles/focus = SubResource("StyleBoxEmpty_pdkef")

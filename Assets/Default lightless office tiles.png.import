@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2puh0h26tfcj"
-path="res://.godot/imported/brick.png-3b7e2d2d29430a475fb75656e3e81471.ctex"
+uid="uid://ba31rgii8eugs"
+path="res://.godot/imported/Default lightless office tiles.png-eb2c61b1ba29d475d738f60a2568ed22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://brick.png"
-dest_files=["res://.godot/imported/brick.png-3b7e2d2d29430a475fb75656e3e81471.ctex"]
+source_file="res://Assets/Default lightless office tiles.png"
+dest_files=["res://.godot/imported/Default lightless office tiles.png-eb2c61b1ba29d475d738f60a2568ed22.ctex"]
 
 [params]
 

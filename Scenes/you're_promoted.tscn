@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5gc2rcwbm2h2"]
+
+[ext_resource type="VideoStream" path="res://Cutscenes/BIG BOSS CUTSCENE.ogv" id="1_8ybq8"]
+[ext_resource type="FontFile" uid="uid://bpbls5psedtyf" path="res://Assets/BalsamiqSans-Bold.ttf" id="2_4oy5f"]
+[ext_resource type="PackedScene" uid="uid://7cgibwnnxkj4" path="res://Scenes/scene_transition_animation.tscn" id="2_qupo3"]
+[ext_resource type="AudioStream" uid="uid://6mbr5qmd4xwe" path="res://Sounds/DEFAULT GAMEJAM MUSIC.mp3" id="3_rh308"]
+
+[node name="You\'re Promoted" type="Node2D"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = -1904.0
+offset_top = -1072.0
+offset_right = 1936.0
+offset_bottom = 1088.0
+stream = ExtResource("1_8ybq8")
+autoplay = true
+loop = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(8.56, 1)
+zoom = Vector2(0.35, 0.35)
+
+[node name="Label" type="Label" parent="Camera2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.2383
+offset_top = -109.0
+offset_right = 561.762
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.299065, 2.06452)
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_4oy5f")
+theme_override_font_sizes/font_size = 80
+text = "You're Promoted"
+horizontal_alignment = 1
+
+[node name="SceneTransitionAnimation" parent="." instance=ExtResource("2_qupo3")]
+position = Vector2(-173, -724)
+scale = Vector2(200.602, 195.946)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(891, 921)
+stream = ExtResource("3_rh308")
+volume_db = -15.0
+autoplay = true
+max_distance = 1e+07

@@ -1,6 +1,6 @@
 [gd_scene load_steps=74 format=3 uid="uid://ccc2fqvx78ic8"]
 
-[ext_resource type="Script" path="res://big_boss.gd" id="1_76brq"]
+[ext_resource type="Script" path="res://Scripts/big_boss.gd" id="1_76brq"]
 [ext_resource type="Texture2D" uid="uid://c1to20apxugre" path="res://Assets/big_boss_death_sheet.png" id="2_wpcf4"]
 [ext_resource type="Texture2D" uid="uid://5bj6lnfhp5ak" path="res://Assets/big_boss_attack_sheet.png" id="3_j73gs"]
 [ext_resource type="Texture2D" uid="uid://b6dpxpy8o3a37" path="res://Assets/big_boss_hurt_sheet.png" id="4_qr8la"]
@@ -513,3 +513,4 @@ stream = ExtResource("11_08m18")
 
 [connection signal="area_entered" from="BBHitbox" to="." method="_on_bb_hitbox_area_entered"]
 [connection signal="area_entered" from="BBDealDamageArea" to="." method="_on_bb_deal_damage_area_area_entered"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

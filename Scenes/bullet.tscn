@@ -1,7 +1,57 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhny78wtly50e"]
+[gd_scene load_steps=11 format=3 uid="uid://bhny78wtly50e"]
 
-[ext_resource type="Script" path="res://bullet.gd" id="1_nuk1r"]
-[ext_resource type="Texture2D" uid="uid://csrie707icale" path="res://Assets/gamejam_cheese_png.png" id="2_0w87s"]
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_nuk1r"]
+[ext_resource type="Texture2D" uid="uid://drs72ixgcwm04" path="res://Assets/effect_sparkles_sheet.png" id="2_ifmkh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtca2"]
+atlas = ExtResource("2_ifmkh")
+region = Rect2(0, 0, 160, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmf2u"]
+atlas = ExtResource("2_ifmkh")
+region = Rect2(160, 0, 160, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nt2v2"]
+atlas = ExtResource("2_ifmkh")
+region = Rect2(0, 276, 160, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6ag8"]
+atlas = ExtResource("2_ifmkh")
+region = Rect2(160, 276, 160, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ldv4"]
+atlas = ExtResource("2_ifmkh")
+region = Rect2(0, 552, 160, 276)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbrbk"]
+atlas = ExtResource("2_ifmkh")
+region = Rect2(160, 552, 160, 276)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j0ulk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtca2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmf2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nt2v2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6ag8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ldv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbrbk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yw5be"]
 radius = 64.2806
@@ -9,8 +59,9 @@ radius = 64.2806
 [node name="Bullet" type="Node2D"]
 script = ExtResource("1_nuk1r")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_0w87s")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_j0ulk")
+autoplay = "default"
 
 [node name="KillTimer" type="Timer" parent="."]
 wait_time = 4.0

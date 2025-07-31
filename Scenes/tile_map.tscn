@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bdjm1hitnk27y" path="res://Assets/New floor tiles.png" id="1_sou2k"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v31j6"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1tyt"]
 texture = ExtResource("1_sou2k")
 texture_region_size = Vector2i(128, 128)
 9:2/0 = 0
@@ -24,7 +24,7 @@ texture_region_size = Vector2i(128, 128)
 [sub_resource type="TileSet" id="TileSet_6aby4"]
 tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_v31j6")
+sources/0 = SubResource("TileSetAtlasSource_g1tyt")
 
 [node name="TileMap" type="TileMap"]
 tile_set = SubResource("TileSet_6aby4")

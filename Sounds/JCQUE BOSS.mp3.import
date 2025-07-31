@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://jy43rb0sndi3"
+path="res://.godot/imported/JCQUE BOSS.mp3-2bf499c7096466fc84be013fcbbaab27.mp3str"
+
+[deps]
+
+source_file="res://Sounds/JCQUE BOSS.mp3"
+dest_files=["res://.godot/imported/JCQUE BOSS.mp3-2bf499c7096466fc84be013fcbbaab27.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

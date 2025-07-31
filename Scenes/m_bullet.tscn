@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://cnykcbon16bmn"]
+
+[ext_resource type="Script" path="res://Scripts/m_bullet.gd" id="1_cf6ae"]
+[ext_resource type="Texture2D" uid="uid://bawgwy2avbhs3" path="res://Assets/effect_cigarette_sheet.png" id="2_2fmg1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e68dx"]
+atlas = ExtResource("2_2fmg1")
+region = Rect2(0, 0, 298, 314)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cf8nx"]
+atlas = ExtResource("2_2fmg1")
+region = Rect2(298, 0, 298, 314)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6jlt"]
+atlas = ExtResource("2_2fmg1")
+region = Rect2(0, 314, 298, 314)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfd3w"]
+atlas = ExtResource("2_2fmg1")
+region = Rect2(298, 314, 298, 314)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fspda"]
+atlas = ExtResource("2_2fmg1")
+region = Rect2(0, 628, 298, 314)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psl3y"]
+atlas = ExtResource("2_2fmg1")
+region = Rect2(298, 628, 298, 314)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7me6s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e68dx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cf8nx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6jlt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfd3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fspda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psl3y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1b2sg"]
+radius = 64.2806
+
+[node name="MBullet" type="Node2D"]
+script = ExtResource("1_cf6ae")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7me6s")
+autoplay = "default"
+
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="BulletDealDamage" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletDealDamage"]
+shape = SubResource("CircleShape2D_1b2sg")
+
+[connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]
+[connection signal="area_entered" from="BulletDealDamage" to="." method="_on_bullet_deal_damage_area_entered"]

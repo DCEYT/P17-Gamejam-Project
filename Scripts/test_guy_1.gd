@@ -20,7 +20,7 @@ func _ready():
 			"After all...",
 			"The old would only serve as a nuisance...",
 			"EXCEPT FOR YOU OF COURSE",
-			"ESPECIALLY SINCE I, PRINCE JACQUES JR. THE 3RD-",
+			"ESPECIALLY SINCE I, PRINCE JACQUAVIOUS JR. THE 3RD-",
 			"(Every other word seems to merge into each other inelligibly)"
 		]
 	elif Global.talkedJacque:
@@ -35,6 +35,6 @@ func _on_interact():
 		scene_transition_animation.play("fade_in")
 		await get_tree().create_timer(.5).timeout
 		Global.talkedJacque = true
-		get_tree().change_scene_to_file("res://Scenes/main.tscn")
+		get_tree().change_scene_to_file("res://Scenes/jacque_cutscene.tscn")
 	elif Global.talkedJacque:
 		pass

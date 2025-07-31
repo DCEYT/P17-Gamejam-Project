@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bywnunyaulyd4"]
+[gd_scene load_steps=17 format=3 uid="uid://bywnunyaulyd4"]
 
 [ext_resource type="PackedScene" uid="uid://cgrx1qklnvgqu" path="res://Scenes/Player.tscn" id="1_ajrrl"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_g1d8b"]
@@ -6,13 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://b0j4ul6owxu7c" path="res://Assets/jacque_bg_test.png" id="2_qc63a"]
 [ext_resource type="PackedScene" uid="uid://mb3w4kd7bja1" path="res://Scenes/enemy_1.tscn" id="3_e65tw"]
 [ext_resource type="PackedScene" uid="uid://dpmpvhfbi7uur" path="res://Scenes/test_guy_1.tscn" id="4_idhot"]
-[ext_resource type="Texture2D" uid="uid://d2puh0h26tfcj" path="res://brick.png" id="5_07gp7"]
+[ext_resource type="Texture2D" uid="uid://d2puh0h26tfcj" path="res://Assets/brick.png" id="5_07gp7"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="6_qjbc1"]
 [ext_resource type="PackedScene" uid="uid://7cgibwnnxkj4" path="res://Scenes/scene_transition_animation.tscn" id="6_t8w15"]
 [ext_resource type="Script" path="res://Scripts/player_health_bar.gd" id="7_c6wm6"]
+[ext_resource type="Texture2D" uid="uid://cxywo8t63imdc" path="res://Assets/office_gamejam_health_bar_bg.png" id="8_b08xd"]
 [ext_resource type="PackedScene" uid="uid://wa1i2q3tupnl" path="res://Scenes/pause_menu.tscn" id="9_8j3jb"]
+[ext_resource type="Texture2D" uid="uid://ly7msbvi8cm5" path="res://Assets/office_gamejam_health_red.png" id="9_vu52q"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_spndk"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1u1as"]
 texture = ExtResource("2_7rnhn")
 texture_region_size = Vector2i(128, 128)
 20:24/0 = 0
@@ -176,7 +178,7 @@ texture_region_size = Vector2i(128, 128)
 2:3/0 = 0
 2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -43, 40, -43, 37, 44, -64, 46)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x2xtt"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ocvo0"]
 texture = ExtResource("5_07gp7")
 texture_region_size = Vector2i(128, 128)
 9:0/0 = 0
@@ -186,8 +188,8 @@ texture_region_size = Vector2i(128, 128)
 [sub_resource type="TileSet" id="TileSet_pghlk"]
 tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_spndk")
-sources/1 = SubResource("TileSetAtlasSource_x2xtt")
+sources/0 = SubResource("TileSetAtlasSource_1u1as")
+sources/1 = SubResource("TileSetAtlasSource_ocvo0")
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_g1d8b")
@@ -220,31 +222,41 @@ max_distance = 1e+11
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="EnemyHealthBar" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("enemy")]
+[node name="EnemyHealthBar" type="TextureProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("enemy")]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -256.0
-offset_top = 40.0
-offset_right = 21.0
-offset_bottom = 67.0
+offset_left = -228.0
+offset_top = 27.0
+offset_right = 717.0
+offset_bottom = 183.0
 grow_horizontal = 2
-scale = Vector2(1.85113, 1.85113)
-value = 100.0
+scale = Vector2(0.485, 0.485)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+step = 0.01
+value = 60.0
+texture_under = ExtResource("8_b08xd")
+texture_progress = ExtResource("9_vu52q")
 script = ExtResource("6_qjbc1")
 enemy = NodePath("../../Enemy1")
 
-[node name="PlayerHealthBar" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("player")]
+[node name="PlayerHealthBar" type="TextureProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("player")]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 265.0
-offset_top = 592.0
-offset_right = 542.0
-offset_bottom = 619.0
+offset_left = 253.0
+offset_top = 580.0
+offset_right = 1198.0
+offset_bottom = 736.0
 grow_horizontal = 2
-scale = Vector2(1.04236, 1.04236)
-value = 100.0
+scale = Vector2(0.33, 0.33)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+step = 0.01
+value = 60.0
+texture_under = ExtResource("8_b08xd")
+texture_progress = ExtResource("9_vu52q")
 script = ExtResource("7_c6wm6")
 player = NodePath("../../Player")
 
@@ -255,3 +267,4 @@ scale = Vector2(399676, 10128.2)
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer2" instance=ExtResource("9_8j3jb")]
+metadata/_edit_use_anchors_ = true

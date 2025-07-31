@@ -1,6 +1,6 @@
 [gd_scene load_steps=75 format=3 uid="uid://dq6y1hk1xhsl5"]
 
-[ext_resource type="Script" path="res://martha.gd" id="1_prfu3"]
+[ext_resource type="Script" path="res://Scripts/martha.gd" id="1_prfu3"]
 [ext_resource type="Texture2D" uid="uid://dshkb1n1mer26" path="res://Assets/martha_death_sheet.png" id="2_fat1a"]
 [ext_resource type="Texture2D" uid="uid://balimcf1y4i2p" path="res://Assets/martha_attack_sheet.png" id="3_pmrdt"]
 [ext_resource type="Texture2D" uid="uid://b1vndiecs3nqj" path="res://Assets/martha_hurt_sheet.png" id="4_71g1j"]
@@ -519,3 +519,4 @@ stream = ExtResource("11_fb8r3")
 
 [connection signal="area_entered" from="MarthaHitbox" to="." method="_on_martha_hitbox_area_entered"]
 [connection signal="area_entered" from="MarthaDealDamageArea" to="." method="_on_martha_deal_damage_area_area_entered"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnn7ohmqb0hw2"]
+
+[ext_resource type="Script" path="res://Scripts/door.gd" id="1_ewjxd"]
+[ext_resource type="Texture2D" uid="uid://bq4ei3wqf26rv" path="res://Assets/office_gamejam_door.png" id="2_hvtsr"]
+[ext_resource type="PackedScene" uid="uid://bd8e6jli7injj" path="res://Scenes/interaction_area.tscn" id="3_ucsbs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i3uvn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hvtsr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jvn5d"]
+radius = 600.471
+
+[node name="Door" type="Node2D"]
+script = ExtResource("1_ewjxd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i3uvn")
+animation = &"idle"
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_ucsbs")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_jvn5d")

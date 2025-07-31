@@ -31,6 +31,6 @@ func _on_interact():
 		scene_transition_animation.play("fade_in")
 		await get_tree().create_timer(.5).timeout
 		Global.talkedMartha = true
-		get_tree().change_scene_to_file("res://Scenes/main.tscn")
+		get_tree().change_scene_to_file("res://Scenes/martha_cutscene.tscn")
 	elif Global.talkedMartha:
 		pass

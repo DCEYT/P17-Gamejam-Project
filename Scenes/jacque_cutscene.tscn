@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://ew0cv7oyy184"]
+
+[ext_resource type="VideoStream" path="res://Cutscenes/Jacque Cutscene.ogv" id="1_24d6l"]
+[ext_resource type="Script" path="res://Scenes/jacque_cutscene.gd" id="1_gk8e1"]
+[ext_resource type="PackedScene" uid="uid://7cgibwnnxkj4" path="res://Scenes/scene_transition_animation.tscn" id="3_0u2xx"]
+[ext_resource type="AudioStream" uid="uid://6mbr5qmd4xwe" path="res://Sounds/DEFAULT GAMEJAM MUSIC.mp3" id="4_6drp2"]
+
+[node name="JacqueCutscene" type="Node2D"]
+script = ExtResource("1_gk8e1")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = -1904.0
+offset_top = -1072.0
+offset_right = 1936.0
+offset_bottom = 1088.0
+stream = ExtResource("1_24d6l")
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(8.56, 1)
+zoom = Vector2(0.35, 0.35)
+
+[node name="SceneTransitionAnimation" parent="." instance=ExtResource("3_0u2xx")]
+position = Vector2(-173, -724)
+scale = Vector2(200.602, 195.946)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(891, 921)
+stream = ExtResource("4_6drp2")
+volume_db = -15.0
+autoplay = true
+max_distance = 1e+07
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
