@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ew0cv7oyy184"]
 
 [ext_resource type="VideoStream" path="res://Cutscenes/Jacque Cutscene.ogv" id="1_24d6l"]
-[ext_resource type="Script" path="res://Scenes/jacque_cutscene.gd" id="1_gk8e1"]
+[ext_resource type="Script" path="res://Scripts/jacque_cutscene.gd" id="1_gk8e1"]
 [ext_resource type="PackedScene" uid="uid://7cgibwnnxkj4" path="res://Scenes/scene_transition_animation.tscn" id="3_0u2xx"]
 [ext_resource type="AudioStream" uid="uid://6mbr5qmd4xwe" path="res://Sounds/DEFAULT GAMEJAM MUSIC.mp3" id="4_6drp2"]
 

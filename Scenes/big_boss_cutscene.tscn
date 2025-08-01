@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://fegak1h2hi8u"]
 
-[ext_resource type="Script" path="res://big_boss_cutscene.gd" id="1_48h7y"]
+[ext_resource type="Script" path="res://Scripts/big_boss_cutscene.gd" id="1_48h7y"]
 [ext_resource type="VideoStream" path="res://Cutscenes/BIG BOSS CUTSCENE.ogv" id="2_f6ryi"]
 [ext_resource type="PackedScene" uid="uid://7cgibwnnxkj4" path="res://Scenes/scene_transition_animation.tscn" id="3_rq58r"]
 [ext_resource type="AudioStream" uid="uid://co7wugobf6hy6" path="res://Sounds/BOSSBATTAL MUSIC P2 WIP.mp3" id="4_2r65i"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://c2prrslqg667k"]
 
-[ext_resource type="Script" path="res://Scenes/big_boss_room.gd" id="1_hr12i"]
+[ext_resource type="Script" path="res://Scripts/big_boss_room.gd" id="1_hr12i"]
 [ext_resource type="PackedScene" uid="uid://cgrx1qklnvgqu" path="res://Scenes/Player.tscn" id="1_inr4m"]
 [ext_resource type="Texture2D" uid="uid://byyoybfjmdl17" path="res://Assets/Backgrounds/boss office.png" id="1_p7h37"]
 [ext_resource type="PackedScene" uid="uid://ccc2fqvx78ic8" path="res://Scenes/big_boss.tscn" id="2_t6uep"]

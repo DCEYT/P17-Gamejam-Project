@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://nrm25tkib6dl"]
 
 [ext_resource type="VideoStream" path="res://Cutscenes/MARTHA CUTSCENE.ogv" id="1_jecsh"]
-[ext_resource type="Script" path="res://Scenes/martha_cutscene.gd" id="1_psega"]
+[ext_resource type="Script" path="res://Scripts/martha_cutscene.gd" id="1_psega"]
 [ext_resource type="PackedScene" uid="uid://7cgibwnnxkj4" path="res://Scenes/scene_transition_animation.tscn" id="2_omno1"]
 [ext_resource type="AudioStream" uid="uid://6mbr5qmd4xwe" path="res://Sounds/DEFAULT GAMEJAM MUSIC.mp3" id="3_3qy25"]
 

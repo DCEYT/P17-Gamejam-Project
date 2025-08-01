@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://bbbhwj7etalvy"]
 
-[ext_resource type="Script" path="res://Scenes/jacques_room.gd" id="1_8uppy"]
+[ext_resource type="Script" path="res://Scripts/jacques_room.gd" id="1_8uppy"]
 [ext_resource type="PackedScene" uid="uid://cgrx1qklnvgqu" path="res://Scenes/Player.tscn" id="1_fcj7b"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="2_cihn8"]
 [ext_resource type="Texture2D" uid="uid://cxywo8t63imdc" path="res://Assets/office_gamejam_health_bar_bg.png" id="2_ms60u"]
